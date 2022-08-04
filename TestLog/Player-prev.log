@@ -1,0 +1,855 @@
+Mono path[0] = 'D:/PC/HQVRMeeting_Data/Managed'
+Mono config path = 'D:/PC/MonoBleedingEdge/etc'
+Initialize engine version: 2020.2.6f1 (8a2143876886)
+[Subsystems] Discovering subsystems at path D:/PC/HQVRMeeting_Data/UnitySubsystems
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/OculusXRPlugin/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/OculusXRPlugin/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/OculusXRPlugin/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/OculusXRPlugin/UnitySubsystemsManifest.json.
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/PxrPlatform/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/PxrPlatform/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/PxrPlatform/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/PxrPlatform/UnitySubsystemsManifest.json.
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+GfxDevice: creating device client; threaded=1
+[XR] [11172] [15:35:41.682][Info   ] Available Layers: (3)
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2080 Ti (ID=0x1e07)
+    Vendor:   
+    VRAM:     11049 MB
+    Driver:   30.0.15.1213
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.084 seconds
+XRGeneral Settings awakening...
+
+D3D11 device created for Microsoft Media Foundation video decoding.
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Display
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Input
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Display
+[Subsystems] Loading plugin UnityOpenXR for subsystem OpenXR Display...
+[XR] [11172] [15:35:43.583][Info   ] Available Layers: (3)
+[Subsystems] Loading plugin UnityOpenXR for subsystem OpenXR Input...
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/OculusXRPlugin
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/OculusXRPlugin.dll
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/OculusXRPlugin
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/libOculusXRPlugin
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/libOculusXRPlugin.dll
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/libOculusXRPlugin
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/OculusXRPlugin
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/OculusXRPlugin.dll
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/OculusXRPlugin
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/libOculusXRPlugin
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/libOculusXRPlugin.dll
+Fallback handler could not load library D:/PC/HQVRMeeting_Data/Mono/libOculusXRPlugin
+DllNotFoundException: OculusXRPlugin
+  at (wrapper managed-to-native) Unity.XR.Oculus.NativeMethods+Internal.LoadOVRPlugin(string)
+  at Unity.XR.Oculus.NativeMethods.LoadOVRPlugin (System.String ovrpPath) [0x00000] in <b5392d30074d43d3ac6c675fd6fb9487>:0 
+  at Unity.XR.Oculus.OculusLoader.RuntimeLoadOVRPlugin () [0x00000] in <b5392d30074d43d3ac6c675fd6fb9487>:0 
+
+<RI> Initializing input.
+New input system (experimental) initialized
+<RI> Input initialized.
+<RI> Initialized touch support.
+[XR] [11172] [15:35:44.828][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_UNKNOWN->XR_SESSION_STATE_IDLE session=2840678964656 time=1657179344753942400
+[XR] [11172] [15:35:44.828][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_IDLE->XR_SESSION_STATE_READY session=2840678964656 time=1657179344753974300
+[XR] [11172] [15:35:44.969][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_READY->XR_SESSION_STATE_SYNCHRONIZED session=2840678964656 time=1657179344958715100
+[XR] [11172] [15:35:44.969][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_SYNCHRONIZED->XR_SESSION_STATE_VISIBLE session=2840678964656 time=1657179344969020300
+[XR] [11172] [15:35:44.969][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_VISIBLE->XR_SESSION_STATE_FOCUSED session=2840678964656 time=1657179344969102200
+[XR] [11172] [15:35:44.969][Info   ] 
+
+==== Start Unity OpenXR Diagnostic Report ====
+
+
+[XR] [11172] [15:35:44.969][Info   ] ==== Report Reason: System Startup Completed ====
+
+
+[XR] [11172] [15:35:44.969][Info   ] ==== OpenXR Support Details ====
+[XR] [11172] [15:35:44.969][Info   ] OpenXR Runtime:
+[XR] [11172] [15:35:44.969][Info   ]     UNKNOWN COMPANY, which is not a Unity supported partner
+[XR] [11172] [15:35:44.969][Info   ] Unity OpenXR Features:
+[XR] [11172] [15:35:44.969][Info   ]     HTCViveControllerProfile Standalone, RuntimeDebuggerOpenXRFeature Standalone, ValveIndexControllerProfile Standalone: Unity
+[XR] [11172] [15:35:44.970][Info   ] Unity Support:
+[XR] [11172] [15:35:44.970][Info   ]     Unity doesn't support some aspects of the runtime and Unity OpenXR Features above. Please attempt to reproduce the issue with only Unity supported aspects before submitting an issue to Unity.
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] ==== OpenXR Init Info ====
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Stage 1 Missing Entry Points: (1)
+[XR] [11172] [15:35:44.970][Info   ]   xrInitializeLoaderKHR
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Stage 2 Missing Entry Points: (9)
+[XR] [11172] [15:35:44.970][Info   ]   xrGetD3D12GraphicsRequirementsKHR
+[XR] [11172] [15:35:44.970][Info   ]   xrGetVulkanInstanceExtensionsKHR
+[XR] [11172] [15:35:44.970][Info   ]   xrGetVulkanDeviceExtensionsKHR
+[XR] [11172] [15:35:44.970][Info   ]   xrGetVulkanGraphicsDeviceKHR
+[XR] [11172] [15:35:44.970][Info   ]   xrGetVulkanGraphicsRequirementsKHR
+[XR] [11172] [15:35:44.970][Info   ]   xrCreateVulkanInstanceKHR
+[XR] [11172] [15:35:44.970][Info   ]   xrCreateVulkanDeviceKHR
+[XR] [11172] [15:35:44.970][Info   ]   xrGetVulkanGraphicsDevice2KHR
+[XR] [11172] [15:35:44.970][Info   ]   xrGetVulkanGraphicsRequirements2KHR
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] ==== OpenXR Provider Info ====
+[XR] [11172] [15:35:44.970][Info   ] Spec Version: 1.0.12
+[XR] [11172] [15:35:44.970][Info   ] Provider Version: 1.1.1
+[XR] [11172] [15:35:44.970][Info   ] App: HQVRMeeting 0.3.2.6 #3719893279
+[XR] [11172] [15:35:44.970][Info   ] Engine: 2020.2.6f1 #835641802
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] ==== OpenXR Runtime Info ====
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Features requested to be enabled: 3
+[XR] [11172] [15:35:44.970][Info   ]     Name=HTC Vive Controller Profile Extension=NA Version=0.0.1
+[XR] [11172] [15:35:44.970][Info   ]     Name=Runtime Debugger Extension=NA Version=1
+[XR] [11172] [15:35:44.970][Info   ]     Name=Valve Index Controller Profile Extension=NA Version=0.0.1
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Features with extensions that failed to be enabled: 0
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Available Extensions: (18)
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_EXT_hand_tracking SpecVersion=2
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_HTC_vive_srworks_pass_through SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_MSFT_scene_understanding SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_EXT_eye_gaze_interaction SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_D3D11_enable SpecVersion=8
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_D3D12_enable SpecVersion=8
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_win32_convert_performance_counter_time SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_visibility_mask SpecVersion=2
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_HTC_vive_cosmos_controller_interaction SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_opengl_enable SpecVersion=10
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_vulkan_enable SpecVersion=8
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_vulkan_enable2 SpecVersion=2
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_EXT_debug_utils SpecVersion=4
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_convert_timespec_time SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_composition_layer_depth SpecVersion=5
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_FB_passthrough SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_FB_triangle_mesh SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_EXT_win32_appcontainer_compatible SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Available Layers: (3)
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_APILAYER_VIVE_hand_tracking SpecVersion=0 LayerVersion=0.0.2 Description=ViveVR OpenXR Hand Tracking
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_APILAYER_VIVE_srworks SpecVersion=0 LayerVersion=0.0.2 Description=ViveVR OpenXR SRWorks
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_APILAYER_VIVE_facial_tracking SpecVersion=0 LayerVersion=0.0.2 Description=VIVE OpenXR Facial tracking
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Available Extensions for layer XR_APILAYER_VIVE_hand_tracking: (1)
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_EXT_hand_tracking SpecVersion=2
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Available Extensions for layer XR_APILAYER_VIVE_srworks: (2)
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_HTC_vive_srworks_pass_through SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_MSFT_scene_understanding SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Available Extensions for layer XR_APILAYER_VIVE_facial_tracking: (1)
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_EXT_eye_gaze_interaction SpecVersion=1
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Runtime Name: Vive Reality Runtime
+[XR] [11172] [15:35:44.970][Info   ] Runtime Version: 0.0.1
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Form factor: XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Spec extensions enabled: (4)
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_D3D11_enable Version=8
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_composition_layer_depth Version=5
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_visibility_mask Version=2
+[XR] [11172] [15:35:44.970][Info   ]   Name=XR_KHR_win32_convert_performance_counter_time Version=1
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Available Reference Spaces: (3)
+[XR] [11172] [15:35:44.970][Info   ]   Name: XR_REFERENCE_SPACE_TYPE_VIEW
+[XR] [11172] [15:35:44.970][Info   ]   Name: XR_REFERENCE_SPACE_TYPE_LOCAL
+[XR] [11172] [15:35:44.970][Info   ]   Name: XR_REFERENCE_SPACE_TYPE_STAGE
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Instance Id  : 0x5ded0980
+[XR] [11172] [15:35:44.970][Info   ] System Id    : 0x1
+[XR] [11172] [15:35:44.970][Info   ] Session Id   : 0x65a91db0
+[XR] [11172] [15:35:44.970][Info   ] 
+[XR] [11172] [15:35:44.970][Info   ] Available View Configuration Types: (1)
+[XR] [11172] [15:35:44.970][Info   ]   View Configuration Type: XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO (Selected)  View configuration FovMutable=False
+[XR] [11172] [15:35:44.970][Info   ]   View [0]: Recommended Width=2514 Height=2968 SampleCount=1
+[XR] [11172] [15:35:44.970][Info   ]   View [0]:     Maximum Width=2514 Height=2968 SampleCount=1
+[XR] [11172] [15:35:44.970][Info   ]   View [1]: Recommended Width=2514 Height=2968 SampleCount=1
+[XR] [11172] [15:35:44.971][Info   ]   View [1]:     Maximum Width=2514 Height=2968 SampleCount=1
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] Available Environment Blend Mode: (2)
+[XR] [11172] [15:35:44.971][Info   ]   Environment Blend Mode (XR_ENVIRONMENT_BLEND_MODE_OPAQUE) : (Selected)
+[XR] [11172] [15:35:44.971][Info   ]   Environment Blend Mode (XR_ENVIRONMENT_BLEND_MODE_ALPHA_BLEND) : 
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] System Properties: Name=Vive OpenXR: Vive SRanipal VendorId=2996
+[XR] [11172] [15:35:44.971][Info   ] System Graphics Properties: MaxWidth=0 MaxHeight=0 MaxLayers=0
+[XR] [11172] [15:35:44.971][Info   ] System Tracking Properties: OrientationTracking=False PositionTracking=False
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] ==== OpenXR Input ====
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] Action Set Data: 
+[XR] [11172] [15:35:44.971][Info   ] Name:     htcvivecontroller                        Desired Profile: /interaction_profiles/htc/vive_controller
+[XR] [11172] [15:35:44.971][Info   ] Name:     valveindexcontroller                     Desired Profile: /interaction_profiles/valve/index_controller
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] ==== OpenXR Swapchain Details ====
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] Render Mode: Single Pass Instanced
+[XR] [11172] [15:35:44.971][Info   ] Depth Submission Mode: None
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] Swapchain Formats:  28 [c:29] 40 45 55 20
+[XR] [11172] [15:35:44.971][Info   ] Creating swapchain for view 0 with dimensions Width=2514 Height=2968 SampleCount=1
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] ==== Last 20 non-XR_SUCCESS returns ====
+[XR] [11172] [15:35:44.971][Info   ] [SUCCESS] xrPollEvent: XR_EVENT_UNAVAILABLE (2x)
+[XR] [11172] [15:35:44.971][Info   ] 
+[XR] [11172] [15:35:44.971][Info   ] ==== Last 20 Events ====
+[XR] [11172] [15:35:44.971][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_UNKNOWN->XR_SESSION_STATE_IDLE
+[XR] [11172] [15:35:44.971][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_IDLE->XR_SESSION_STATE_READY
+[XR] [11172] [15:35:44.971][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_READY->XR_SESSION_STATE_SYNCHRONIZED
+[XR] [11172] [15:35:44.971][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_SYNCHRONIZED->XR_SESSION_STATE_VISIBLE
+[XR] [11172] [15:35:44.971][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_VISIBLE->XR_SESSION_STATE_FOCUSED
+[XR] [11172] [15:35:44.971][Info   ] 
+
+==== End Unity OpenXR Diagnostic Report ====
+
+
+[XR] [OpenXR Input]: Application space recovered
+XRTextureManager::RequestCreateTexture
+XRTextureManager::SetupRenderTextureFromXRRequest (id: 1 col: 000002955E0B3278 d: 0000000000000000)
+RenderTexture->Create
+IVRDeviceCallback_CreateEyeTextureResources 000002955E0B3278
+XRTextureManager::RequestCreateTexture
+XRTextureManager::SetupRenderTextureFromXRRequest (id: 2 col: 000002955E0B37B8 d: 0000000000000000)
+RenderTexture->Create
+IVRDeviceCallback_CreateEyeTextureResources 000002955E0B37B8
+XRTextureManager::RequestCreateTexture
+XRTextureManager::SetupRenderTextureFromXRRequest (id: 3 col: 000002955E0B3A78 d: 0000000000000000)
+RenderTexture->Create
+IVRDeviceCallback_CreateEyeTextureResources 000002955E0B3A78
+UnloadTime: 0.582700 ms
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+华强方特《捏脸系统》用户数据文件
+-->
+<INI>
+	<!-- 客户端信息：项目名称 、资源路径、 版本号、 描述、 创作者-->
+	<ClientInfo>
+		<Data ProjectName="NLXT" Version="0.3.0" Discription="HQFT" Creator="Tony"/>
+	</ClientInfo>
+	<!-- 
+说明：
+ 编号ID:int类型 1...n
+ 昵称: string类型 角色昵称
+ 性别：int类型 0-女性 1-男性
+ 头发：int类型 1、2、3、4... 目前只有4套
+ 上衣：int类型 1、2、3、4... 目前只有4种
+ 饰品：int类型 1、2、3、4... 目前只有4种
+-->
+	<Character>
+		<Data ID="1" Name="Girl" Sex="0" Hair="1" Clothes= "1" Access="1"/>
+		<Data ID="2" Name="Boy" Sex="1" Hair="1" Clothes= "1" Access="1"/>
+	</Character>
+
+	<Laser>
+		<Data ID="0" Name="FEC36AFF" ColorBlock="FF6700FF"/>
+		<Data ID="1" Name="F0E26BFF" ColorBlock="FDF02EFF"/>
+		<Data ID="2" Name="76B52EFF" ColorBlock="2CFF28FF"/>
+		<Data ID="3" Name="1CABF1FF" ColorBlock="0099FFFF"/>
+		<Data ID="4" Name="7E2755FF" ColorBlock="8100FFFF"/>
+		<Data ID="5" Name="E44987FF" ColorBlock="FF4A8DFF"/>
+		<Data ID="6" Name="FB0000FF" ColorBlock="FD1515FF"/>
+	</Laser>
+</INI>
+
+
+读表完毕！
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.153500 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 4983.
+Total: 2.519400 ms (FindLiveObjects: 0.269700 ms CreateObjectMapping: 0.097400 ms MarkObjects: 2.133800 ms  DeleteObjects: 0.018300 ms)
+
+-------vr room
+
+跳转到登陆场景
+
+<color=red>sceneName:Login</color>
+
+<color=red>sceneName22:False</color>
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.259900 ms
+记录是否记密码:True
+
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 4760.
+Total: 2.913800 ms (FindLiveObjects: 0.183000 ms CreateObjectMapping: 0.075200 ms MarkObjects: 2.624900 ms  DeleteObjects: 0.030400 ms)
+
+Username：wangkai1---Password:123456
+
+[2022-07-07 15:36:52 478] connect to 42.192.168.105:20013 ...
+
+[2022-07-07 15:36:52 490] NetworkInterfaceBase::_asyncConnect(), will connect to '42.192.168.105:20013' ...
+
+[2022-07-07 15:36:52 532] NetworkInterfaceBase::_asyncConnectCB(), connect to '42.192.168.105:20013' finish. error = ''
+
+[2022-07-07 15:36:52 551] NetworkInterfaceBase::_onConnectionState(), connect to 42.192.168.105:20013 is success!
+
+[2022-07-07 15:36:52 552] KBEngine::login_loginapp(): connect 42.192.168.105:20013 success!
+
+[2022-07-07 15:36:52 607] KBEngine::Client_onHelloCB: verInfo(2.5.10), scriptVersion(0.1.0), srvProtocolMD5(5D78440B946861D6F6022DAA29CA182A), srvEntitydefMD5(BEAB1986859DCF9E1C450C026F958753), + ctype(2)!
+
+[2022-07-07 15:36:52 607] KBEngine::login_loginapp(): send login! username=wangkai1
+
+[2022-07-07 15:36:52 673] KBEngine::Client_onLoginSuccessfully: accountName(wangkai1), addr(42.192.168.105:20015|20005), datas(0)!
+
+connect to loginBaseapp, please wait...(连接到网关， 请稍后...)
+
+[2022-07-07 15:36:52 674] NetworkInterfaceBase::reset(), close socket from '42.192.168.105:20013'
+
+[2022-07-07 15:36:52 676] connect to 42.192.168.105:20005 ...
+
+[2022-07-07 15:36:52 677] NetworkInterfaceBase::_asyncConnect(), will connect to '42.192.168.105:20005' ...
+
+[2022-07-07 15:36:52 719] NetworkInterfaceBase::_asyncConnectCB(), connect to '42.192.168.105:20005' finish. error = ''
+
+[2022-07-07 15:36:52 729] NetworkInterfaceBase::_onConnectionState(), connect to 42.192.168.105:20005 is success!
+
+[2022-07-07 15:36:52 729] KBEngine::login_baseapp(): connect 42.192.168.105:20005 success!
+
+[2022-07-07 15:36:52 807] KBEngine::Client_onHelloCB: verInfo(2.5.10), scriptVersion(0.1.0), srvProtocolMD5(5D78440B946861D6F6022DAA29CA182A), srvEntitydefMD5(BEAB1986859DCF9E1C450C026F958753), + ctype(6)!
+
+[2022-07-07 15:36:53 007] KBEngine::Client_onCreatedProxies: eid(172), entityType(Account)!
+
+selfAvartRtcID:4dae3f0213c57712227a8580991229ea
+
+<color=red>加入消息监听</color>
+
+<color=red>KLSDK PC 初始化</color>
+
+异步跳转大厅--------------------------------------------------
+
+<color=red>sceneName:Dating</color>
+
+<color=red>sceneName22:False</color>
+
+<color=#FF4040>=============================读表================================C:/Users/vr/AppData/LocalLow/HQCompany/HQVRMeeting/UserSharedInfo.txt</color>
+
+[2022-07-07 15:36:53 264] PacketSenderTCP::~PacketSenderTCP(), destroyed!
+
+[2022-07-07 15:36:53 264] NetworkInterfaceBase::~NetworkInterfaceBase(), destructed!!!
+
+[2022-07-07 15:36:53 265] PacketReceiverTCP::~PacketReceiverTCP(), destroyed!
+
+<color=#FF4040>wangkai1,    字典个数m_UserInfo：1C:/Users/vr/AppData/LocalLow/HQCompany/HQVRMeeting/UserSharedInfo.txt</color>
+
+[2022-07-07 15:36:53 296] Event::fire_: event=SharedMgr::onAccountInit
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.FormatException: Index (zero based) must be greater than or equal to zero and less than the size of the argument list.
+  at System.Text.StringBuilder.AppendFormatHelper (System.IFormatProvider provider, System.String format, System.ParamsArray args) [0x000ff] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at System.String.FormatHelper (System.IFormatProvider provider, System.String format, System.ParamsArray args) [0x00023] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at System.String.Format (System.String format, System.Object arg0) [0x00008] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at SharedMgr.ReadConfiguration () [0x002ba] in <a545997f60634fbf829e43221986cf67>:0 
+  at SharedMgr.onAccountInit (System.UInt64 rndUUID, System.Int32 eid, KBEngine.Account accountEntity) [0x00000] in <a545997f60634fbf829e43221986cf67>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod.InternalInvoke(System.Reflection.MonoMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00032] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+   --- End of inner exception stack trace ---
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00048] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <eae584ce26bc40229c1b1aa476bfa589>:0 
+  at KBEngine.Event.fire_ (System.Collections.Generic.Dictionary`2[TKey,TValue] events, System.Collections.Generic.LinkedList`1[T] firedEvents, System.String eventname, System.Object[] args, System.Boolean eventsImmediately) [0x00037] in <29f8b4675bce4fcb8510ca382f9c2d09>:0 
+
+[2022-07-07 15:36:53 517] NetworkInterfaceBase::~NetworkInterfaceBase(), destructed!!!
+
+The referenced script on this Behaviour (Game Object 'Main Camera') is missing!
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 7.225200 ms
+账号密码 , wangkai1 , 123456
+
+GameManager 注册协议回调
+
+RoomType : Hall , roomId :  , password : 
+
+
+Unloading 58 unused Assets to reduce memory usage. Loaded Objects now: 9090.
+Total: 6.207900 ms (FindLiveObjects: 0.429500 ms CreateObjectMapping: 0.292500 ms MarkObjects: 5.416700 ms  DeleteObjects: 0.068700 ms)
+
+请求各房间的名称列表
+
+key :0, json : {"Tire":{"GlassesID":2,"FacemaskID":1,"HatID":-1},"Hairstyle":{"ID":1},"Head":{"FaceID":1,"EyeID":1001,"NoseID":1001,"EarID":1001,"MouthID":1001},"Clothes":{"ID":2},"GenderType":0}
+
+name : wangkai1 json : {"Tire":{"GlassesID":2,"FacemaskID":1,"HatID":-1},"Hairstyle":{"ID":1},"Head":{"FaceID":1,"EyeID":1001,"NoseID":1001,"EarID":1001,"MouthID":1001},"Clothes":{"ID":2},"GenderType":0}
+
+CharacterManager ,请求生成角色,jsonData : {"Tire":{"GlassesID":2,"FacemaskID":1,"HatID":-1},"Hairstyle":{"ID":1},"Head":{"FaceID":1,"EyeID":1001,"NoseID":1001,"EarID":1001,"MouthID":1001},"Clothes":{"ID":2},"GenderType":0}
+
+从json实例化的ShapeData 数据TireIDs1,HairstyleID1,ClothesIDs2
+
+onReqRoomNameListRet ROOM：111111
+
+onReqRoomNameListRet ROOM：222222
+
+onReqRoomNameListRet ROOM：333333
+
+onReqRoomNameListRet ROOM：444444
+
+onReqRoomNameListRet ROOM：555555
+
+onReqRoomNameListRet ROOM：666666
+
+onReqRoomProptiesRet 房间号码：111111,室外风格：0,房间风格：1,密码设置：0,主题：,菜单状态：0,现有人数：0,住持人：
+
+onReqRoomProptiesRet 房间号码：222222,室外风格：0,房间风格：1,密码设置：0,主题：,菜单状态：0,现有人数：0,住持人：
+
+onReqRoomProptiesRet 房间号码：333333,室外风格：0,房间风格：1,密码设置：0,主题：,菜单状态：0,现有人数：0,住持人：
+
+onReqRoomProptiesRet 房间号码：444444,室外风格：0,房间风格：1,密码设置：0,主题：,菜单状态：0,现有人数：0,住持人：
+
+onReqRoomProptiesRet 房间号码：555555,室外风格：0,房间风格：1,密码设置：0,主题：,菜单状态：0,现有人数：0,住持人：
+
+onReqRoomProptiesRet 房间号码：666666,室外风格：0,房间风格：1,密码设置：0,主题：,菜单状态：0,现有人数：0,住持人：
+
+校验房间密码，房间ID: 555555	房间密码 :
+
+555555  异步会议室： waijing_huangshan
+
+校验房间密码，响应回调: arg1: 0	arg2 :555555	arg3: 1
+
+<color=red>sceneName:waijing_huangshan</color>
+
+<color=red>sceneName22:False</color>
+
+The referenced script on this Behaviour (Game Object 'End Light') is missing!
+
+The referenced script on this Behaviour (Game Object 'End Light') is missing!
+
+The referenced script on this Behaviour (Game Object 'End Light') is missing!
+
+The referenced script on this Behaviour (Game Object 'End Light') is missing!
+
+Unloading 9 Unused Serialized files (Serialized files now loaded: 0)
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+UnloadTime: 5.943400 ms
+C++Log:screen peer free start
+
+C++Log:screen peer free stop
+
+初始化ScreenShareManager
+
+进入会议室
+
+C++Log:start socket
+
+C++Log:-----------CMD Start--------------
+
+C++Log:websocket url = ws://81.69.253.187:8443/ws?peer=4dae3f0213c57712227a8580991229ea
+
+C++Log:websocket socket open
+
+C++Log:start socket ok
+
+C++Log:start join room
+
+C++Log:-----------CMD SendJoin--------------
+
+C++Log:websocket send join = {
+   "data" : {
+      "rid" : "555555"
+   },
+   "id" : 4211612,
+   "method" : "join",
+   "request" : true
+}
+
+C++Log:websocket recv = {"response":true,"id":4211612,"ok":true,"data":{"pubs":[{"mid":"f80fe869c060117be82093ab7c3762d6#382183","minfo":{"audio":true,"video":false,"videotype":0},"rid":"555555","sfuid":"shenzhen_sfu_1","uid":"f80fe869c060117be82093ab7c3762d6"}],"users":[{"bizid":"shenzhen_biz_1","rid":"555555","uid":"f80fe869c060117be82093ab7c3762d6"}]}}
+
+C++Log:start join room ok
+
+<color=red>加入房间是否成功：True</color>
+
+<color=red>开始推流</color>
+
+进入会议室------------------------------------------------------
+
+C++Log:WorkThreadFunc start
+
+C++Log:start audio pub
+
+C++Log:local peer free start
+
+C++Log:local peer free stop
+
+C++Log:local peer create start
+
+C++Log:HeatThreadFunc start
+
+C++Log:start send alive
+
+C++Log:-----------CMD SendAlive--------------
+
+C++Log:websocket send alive = {
+   "data" : {
+      "rid" : "555555"
+   },
+   "id" : 6869302,
+   "method" : "keepalive",
+   "request" : true
+}
+
+C++Log:local peer create stop
+
+C++Log:start screen pub
+
+C++Log:screen peer create start
+
+C++Log:local peer create offer sdp ok
+
+C++Log:local peer set offer sdp ok
+
+C++Log:-----------CMD SendPublish--------------
+
+C++Log:websocket send publish = {
+   "data" : {
+      "jsep" : {
+         "sdp" : "v=0\r\no=- 7943914471800899086 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS ARDAMS\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 103 104 9 102 0 8 106 105 13 110 112 113 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:354M\r\na=ice-pwd:OkfK0tuYyB88pQx1KZj+xDqq\r\na=ice-options:trickle\r\na=fingerprint:sha-256 7A:80:95:F4:CA:62:76:D9:AB:06:90:2E:0E:BD:43:56:F3:7F:EF:44:41:47:3F:1C:6B:1B:BA:F3:3D:7A:61:C3\r\na=setup:actpass\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=extmap:5 urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id\r\na=extmap:6 urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id\r\na=sendonly\r\na=msid:ARDAMS ARDAMSa0\r\na=rtcp-mux\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:103 ISAC/16000\r\na=rtpmap:104 ISAC/32000\r\na=rtpmap:9 G722/8000\r\na=rtpmap:102 ILBC/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:106 CN/32000\r\na=rtpmap:105 CN/16000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:112 telephone-event/32000\r\na=rtpmap:113 telephone-event/16000\r\na=rtpmap:126 telephone-event/8000\r\na=ssrc:3669095215 cname:SN5duItxHY56GOhJ\r\na=ssrc:3669095215 msid:ARDAMS ARDAMSa0\r\na=ssrc:3669095215 mslabel:ARDAMS\r\na=ssrc:3669095215 label:ARDAMSa0\r\n",
+         "type" : "offer"
+      },
+      "minfo" : {
+         "audio" : true,
+         "video" : false,
+         "videotype" : 0
+      },
+      "rid" : "555555"
+   },
+   "id" : 3346734,
+   "method" : "publish",
+   "request" : true
+}
+
+C++Log:screen peer create stop
+
+C++Log:start remote sub = f80fe869c060117be82093ab7c3762d6#382183
+
+C++Log:remote peer free start = f80fe869c060117be82093ab7c3762d6#382183
+
+C++Log:remote peer free stop = f80fe869c060117be82093ab7c3762d6#382183
+
+C++Log:remote peer create start = f80fe869c060117be82093ab7c3762d6#382183
+
+C++Log:remote peer create stop = f80fe869c060117be82093ab7c3762d6#382183
+
+C++Log:remote peer create offer sdp ok = f80fe869c060117be82093ab7c3762d6#382183
+
+C++Log:remote peer set offer sdp ok = f80fe869c060117be82093ab7c3762d6#382183
+
+C++Log:websocket recv = {"response":true,"id":6869302,"ok":true,"data":{}}
+
+C++Log:websocket recv = {"notification":true,"method":"stream-remove","data":{"mid":"f80fe869c060117be82093ab7c3762d6#382183","rid":"555555","uid":"f80fe869c060117be82093ab7c3762d6"}}
+
+C++Log:remote peer free start = f80fe869c060117be82093ab7c3762d6#382183
+
+
+Unloading 377 unused Assets to reduce memory usage. Loaded Objects now: 21119.
+Total: 17.489600 ms (FindLiveObjects: 1.367100 ms CreateObjectMapping: 0.597000 ms MarkObjects: 14.855200 ms  DeleteObjects: 0.669800 ms)
+
+C++Log:remote peer free stop = f80fe869c060117be82093ab7c3762d6#382183
+
+[2022-07-07 15:37:02 979] KBEngine::Client_onEntityDestroyed: entity(172)
+
+[2022-07-07 15:37:02 979] KBEngine::Client_onCreatedProxies: eid(173), entityType(Avatar)!
+
+RoomType : MeettingRoom , roomId : 555555 , password : 
+
+ReqEnterRoomRet------------------------------------------------------
+
+Avatar onReqEnterRoomRet客户端请求进入房间结果返回:0
+
+<color=#00EEEE>0 onAvatarEnterWorld----------------1657179422 </color>
+
+<color=#00EEEE>0----------------1657179422 </color>
+
+123123123
+
+5-改变：设置是否已经下载沙盒文件:id:173,下载状态：0,下载旧状态：0
+
+5-改变：设置是否已经下载沙盒文件:id:173,下载状态：0
+
+3-改变：设置是否已经下载沙盒文件:id:173,下载状态：0
+
+5-改变：设置是否已经下载沙盒文件:0
+
+onMuteStatusChanged id=173 Value =0
+
+onAvatarDataChanged 虚拟角色变化：
+
+<color=red>角色状态的改变 id:173 oldValue:0 roleType:0</color>
+
+<color=red>禁言状态的改变 id:173 oldValue:1 talkEnalbeStatus:1</color>
+
+[2022-07-07 15:37:03 089] KBEngine::Client_setSpaceData: spaceID(5), key(_mapping), value(spaces/xinshoucun)!
+
+[2022-07-07 15:37:03 089] KBEngine::addSpaceGeometryMapping: spaceID(5), respath(spaces/xinshoucun)!
+
+[2022-07-07 15:37:03 089] KBEngine::Client_initSpaceData: spaceID(5), size(1)!
+
+onAvatarDataChanged 虚拟角色变化：
+
+虚拟角色的ID：64  语音的ID41d6aa337d90950e68f32a4979a5129d
+
+虚拟角色的ID：173  语音的ID4dae3f0213c57712227a8580991229ea
+
+CharacterManager ,请求生成角色,jsonData : {"Tire":{"GlassesID":2,"FacemaskID":1,"HatID":-1},"Hairstyle":{"ID":1},"Head":{"FaceID":1,"EyeID":1001,"NoseID":1001,"EarID":1001,"MouthID":1001},"Clothes":{"ID":2},"GenderType":0}
+
+从json实例化的ShapeData 数据TireIDs1,HairstyleID1,ClothesIDs2
+
+--------------------------------------------avatar.aliasName:wangkai1
+
+<color=red>角色状态的改变 id:173 oldValue:0 roleType:1</color>
+
+reqSeatsStatus 请求座位状态
+
+注册语音事件 , CharacterControllerBase
+
+<color=red>当前用户设置了麦克风状态 False</color>
+
+<color=red>当前用户设置了麦克风状态 False</color>
+
+<color=red>id:173roleType:1 talkEnalbeStatus:1muteStatus:0</color>
+
+更新座位返回数据15
+
+onReqTopicalDescripRet: arg1:0 arg2:
+
+ Bucket云存储上对应的存储空间  meeting-1251510006 Token临时凭证token sdk用到    Z28AKLi4Ft3PSL2xMYqqWRd44brg2mha62ecc160870227b490d0921609cc7797IjV80daK7L8Ygqgq_cg5I2XSjv_IZmFGQdM4v2O9CEnma5Ly5p2uj_F_sNm_g0AMONiTEjlbCa77W_o17M51eYQoeYwtlHVChUgEMcENfppcoAY8tlsTcL3VKY3sqf2YbKWwE_0WyuUTraG6kwCeSWLI37SVGduvKKKOuTlfzFB3U-0dVqPcFEoxBXE1lyiW5n68yXUfQMpMjFrqN5wMppIBvGyxg5TI9oCGKJbJiTBYWqdxCKhHsFX7QGP47SQjKfSSb25JHcHN-SFxq7Y3DAlMvdWlxmR3Zeq314mwMnw Secretid  密钥id sdk用到      AKIDGv9tXVFCoo7vfDX1PgPg_dev_lTOHixFt5BSjQdE0FsCw2zXsnpxCL70RXM911Fm Secretkey 密钥key sdk用到     inL6Kif8A4QSzO4I+vOAcCUEyLXbPzcqch2ON93Wux8= expireTime   过期时间         1657181223
+
+<color=#00EEEE>Bucket云存储上对应的存储空间:meeting-1251510006-- Token临时凭证token sdk用到:Z28AKLi4Ft3PSL2xMYqqWRd44brg2mha62ecc160870227b490d0921609cc7797IjV80daK7L8Ygqgq_cg5I2XSjv_IZmFGQdM4v2O9CEnma5Ly5p2uj_F_sNm_g0AMONiTEjlbCa77W_o17M51eYQoeYwtlHVChUgEMcENfppcoAY8tlsTcL3VKY3sqf2YbKWwE_0WyuUTraG6kwCeSWLI37SVGduvKKKOuTlfzFB3U-0dVqPcFEoxBXE1lyiW5n68yXUfQMpMjFrqN5wMppIBvGyxg5TI9oCGKJbJiTBYWqdxCKhHsFX7QGP47SQjKfSSb25JHcHN-SFxq7Y3DAlMvdWlxmR3Zeq314mwMnw-- Secretid密钥id sdk用到：AKIDGv9tXVFCoo7vfDX1PgPg_dev_lTOHixFt5BSjQdE0FsCw2zXsnpxCL70RXM911Fm-- Secretke密钥key sdk用到：inL6Kif8A4QSzO4I+vOAcCUEyLXbPzcqch2ON93Wux8=-- expireTime过期时间：1657181223</color>
+
+<color=#00EEEE>1657181223----------------1657179424 </color>
+
+index::1
+
+index::2
+
+获取当前账号下上传的文件信息列表 : 获取当前账号下上传的文件信息列表
+
+<color=#00EEEE>0 - 文件信息list( dbid:18,  modelname:1,  filename:wangkai1/1/t.zip,  previewfile:wangkai1/1/t.jpg,  info:{"modelsize":51325079,"modeltype":0,"modelfiletype":"GLB"},  descripfile: </color>
+
+<color=#00EEEE>1 - 文件信息list( dbid:19,  modelname:2,  filename:wangkai1/2/y.zip,  previewfile:wangkai1/2/y.jpg,  info:{"modelsize":75903905,"modeltype":0,"modelfiletype":"GLB"},  descripfile: </color>
+
+<color=#00EEEE>2 - 文件信息list( dbid:20,  modelname:3,  filename:wangkai1/3/z.zip,  previewfile:wangkai1/3/z.jpg,  info:{"modelsize":51325079,"modeltype":0,"modelfiletype":"GLB"},  descripfile: </color>
+
+得到文件信息list:3
+
+文件信息list: dbid:18,  modelname:1,  filename:wangkai1/1/t.zip,  previewfile:wangkai1/1/t.jpg,  info:{"modelsize":51325079,"modeltype":0,"modelfiletype":"GLB"}
+
+解析服务器返回Json的info：modelsize:51325079,modeltype:0,modelfiletype:GLB.
+
+储存文件名称：t.jpg
+
+储存文件名无扩展名：t
+
+储存路径：C:/Users/vr/AppData/LocalLow/HQCompany/HQVRMeeting
+
+文件信息list: dbid:19,  modelname:2,  filename:wangkai1/2/y.zip,  previewfile:wangkai1/2/y.jpg,  info:{"modelsize":75903905,"modeltype":0,"modelfiletype":"GLB"}
+
+解析服务器返回Json的info：modelsize:75903905,modeltype:0,modelfiletype:GLB.
+
+储存文件名称：y.jpg
+
+储存文件名无扩展名：y
+
+储存路径：C:/Users/vr/AppData/LocalLow/HQCompany/HQVRMeeting
+
+文件信息list: dbid:20,  modelname:3,  filename:wangkai1/3/z.zip,  previewfile:wangkai1/3/z.jpg,  info:{"modelsize":51325079,"modeltype":0,"modelfiletype":"GLB"}
+
+解析服务器返回Json的info：modelsize:51325079,modeltype:0,modelfiletype:GLB.
+
+储存文件名称：z.jpg
+
+储存文件名无扩展名：z
+
+储存路径：C:/Users/vr/AppData/LocalLow/HQCompany/HQVRMeeting
+
+<color=#00EEEE>下载个数：0</color>
+
+<color=#00EEEE>更新数据：读取状态True下载计数：0</color>
+
+<color=#00EEEE>发送数据给UI数据：读取状态True下载计数：0更新数据个数：3</color>
+
+index::1
+
+index::2
+
+index::3
+
+card count::::1
+
+index::1
+
+index::2
+
+index::3
+
+----------------------------------数据同步完成
+
+----------->>>>>Bilt::2022/7/7 15:37:05
+
+显示设置面板！
+
+角色类型：m_bPlayer：True--m_bAdmin:True
+
+点击触发器
+
+角色类型：m_bPlayer：True--m_bAdmin:True
+
+点击会议设置按钮!
+
+characterLimit ::16
+
+C++Log:websocket recv = {"response":true,"id":3346734,"ok":true,"data":{"jsep":{"sdp":"v=0\r\no=- 8780978816892213285 1657179427 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 5C:E3:EE:AA:23:A5:79:38:3F:F8:3D:B7:B0:78:22:84:C3:6B:D9:B5:1D:E7:66:98:61:45:84:11:55:4C:68:75\r\na=group:BUNDLE 0\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=ice-ufrag:vgRBRNcsroXNFJli\r\na=ice-pwd:cLqNlGActSGwLNuFuoYzGJLkbmTdxdYI\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtpmap:111 opus/48000/2\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=recvonly\r\na=candidate:foundation 1 udp 2130706431 10.1.2.24 49365 typ host generation 0\r\na=candidate:foundation 2 udp 2130706431 10.1.2.24 49365 typ host generation 0\r\na=end-of-candidates\r\n","type":"answer"},"mid":"4dae3f0213c57712227a8580991229ea#741273","sfuid":"shenzhen_sfu_1"}}
+
+C++Log:local peer set answer sdp ok
+
+Crash!!!
+SymInit: Symbol-SearchPath: '.;D:\PC;D:\PC;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 534, UserName: 'vr'
+OS-Version: 10.0.0
+D:\PC\HQVRMeeting.exe:HQVRMeeting.exe (00007FF7435F0000), size: 675840 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.2.6.8515
+C:\WINDOWS\SYSTEM32\ntdll.dll:ntdll.dll (00007FF81C9D0000), size: 2052096 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\System32\KERNEL32.DLL:KERNEL32.DLL (00007FF81AAF0000), size: 774144 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\System32\KERNELBASE.dll:KERNELBASE.dll (00007FF81A510000), size: 2936832 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+D:\PC\UnityPlayer.dll:UnityPlayer.dll (00007FFF976F0000), size: 29163520 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.2.6.8515
+C:\WINDOWS\System32\USER32.dll:USER32.dll (00007FF81AC10000), size: 1703936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1503
+C:\WINDOWS\System32\win32u.dll:win32u.dll (00007FF81A9F0000), size: 139264 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\System32\GDI32.dll:GDI32.dll (00007FF81C450000), size: 172032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+C:\WINDOWS\System32\gdi32full.dll:gdi32full.dll (00007FF81A1F0000), size: 1093632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\System32\msvcp_win.dll:msvcp_win.dll (00007FF81A150000), size: 643072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.789
+C:\WINDOWS\System32\ucrtbase.dll:ucrtbase.dll (00007FF81A410000), size: 1048576 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.789
+C:\WINDOWS\System32\ole32.dll:ole32.dll (00007FF81BBD0000), size: 1220608 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1202
+C:\WINDOWS\System32\RPCRT4.dll:RPCRT4.dll (00007FF81C180000), size: 1200128 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\System32\combase.dll:combase.dll (00007FF81C630000), size: 3489792 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\SYSTEM32\VERSION.dll:VERSION.dll (00007FF814650000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\msvcrt.dll:msvcrt.dll (00007FF81AE60000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.19041.546
+C:\WINDOWS\System32\SHLWAPI.dll:SHLWAPI.dll (00007FF81AA20000), size: 348160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\System32\SETUPAPI.dll:SETUPAPI.dll (00007FF81BD00000), size: 4657152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\System32\cfgmgr32.dll:cfgmgr32.dll (00007FF81A300000), size: 319488 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+C:\WINDOWS\System32\bcrypt.dll:bcrypt.dll (00007FF81A3E0000), size: 159744 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1023
+C:\WINDOWS\System32\ADVAPI32.dll:ADVAPI32.dll (00007FF81B0D0000), size: 712704 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\System32\sechost.dll:sechost.dll (00007FF81ADB0000), size: 638976 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1586
+C:\WINDOWS\System32\SHELL32.dll:SHELL32.dll (00007FF81B270000), size: 7618560 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\System32\OLEAUT32.dll:OLEAUT32.dll (00007FF81BA50000), size: 839680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.985
+C:\WINDOWS\System32\IMM32.dll:IMM32.dll (00007FF81B180000), size: 196608 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\OPENGL32.dll:OPENGL32.dll (00007FFFF8D10000), size: 1204224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\SYSTEM32\WINMM.dll:WINMM.dll (00007FF808090000), size: 159744 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\CRYPT32.dll:CRYPT32.dll (00007FF81A890000), size: 1400832 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1320
+C:\WINDOWS\System32\WS2_32.dll:WS2_32.dll (00007FF81AA80000), size: 438272 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\WINHTTP.dll:WINHTTP.dll (00007FF813380000), size: 1089536 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\SYSTEM32\HID.DLL:HID.DLL (00007FF8189A0000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\GLU32.dll:GLU32.dll (00007FFFFA8C0000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\SYSTEM32\kernel.appcore.dll:kernel.appcore.dll (00007FF817F20000), size: 73728 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\bcryptPrimitives.dll:bcryptPrimitives.dll (00007FF81A350000), size: 532480 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1415
+C:\WINDOWS\system32\uxtheme.dll:uxtheme.dll (00007FF817B20000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+C:\WINDOWS\System32\shcore.dll:shcore.dll (00007FF81BB20000), size: 708608 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1645
+C:\WINDOWS\SYSTEM32\windows.storage.dll:windows.storage.dll (00007FF818200000), size: 7946240 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\SYSTEM32\Wldp.dll:Wldp.dll (00007FF819B40000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\SYSTEM32\profapi.dll:profapi.dll (00007FF81A020000), size: 126976 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.844
+D:\PC\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll:mono-2.0-bdwgc.dll (00007FFF96F80000), size: 7790592 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\System32\PSAPI.DLL:PSAPI.DLL (00007FF81AE50000), size: 32768 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\MSCTF.dll:MSCTF.dll (00007FF81C2B0000), size: 1134592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+D:\PC\HQVRMeeting_Data\Plugins\x86_64\UnityOpenXR.dll:UnityOpenXR.dll (00007FFFD2110000), size: 782336 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.1.1.0
+C:\WINDOWS\SYSTEM32\d3d11.dll:d3d11.dll (00007FF816050000), size: 2506752 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+C:\WINDOWS\SYSTEM32\dxgi.dll:dxgi.dll (00007FF8189E0000), size: 995328 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\Comctl32.dll:Comctl32.dll (00007FF806960000), size: 2727936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 6.10.19041.1110
+C:\WINDOWS\SYSTEM32\dbghelp.dll:dbghelp.dll (00007FF80B2F0000), size: 1982464 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.867
+C:\WINDOWS\SYSTEM32\MSVCP140.dll:MSVCP140.dll (00007FFFD4BF0000), size: 598016 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.28.29334.0
+C:\WINDOWS\SYSTEM32\mfc140u.dll:mfc140u.dll (00007FFFC5E20000), size: 5677056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.28.29334.0
+C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll:VCRUNTIME140.dll (00007FF800F20000), size: 102400 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.28.29334.0
+C:\WINDOWS\SYSTEM32\VCRUNTIME140_1.dll:VCRUNTIME140_1.dll (00007FF80D6B0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.28.29334.0
+C:\WINDOWS\SYSTEM32\dbgcore.DLL:dbgcore.DLL (00007FF80B1D0000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.789
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRHandTracking\ViveOpenXRHandTracking.dll:ViveOpenXRHandTracking.dll (00007FF80C270000), size: 102400 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.1.8.4
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRHandTracking\aristo_interface.dll:aristo_interface.dll (00007FFF95D30000), size: 16986112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.0.3
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRHandTracking\cosmos_camera.dll:cosmos_camera.dll (00007FF801F30000), size: 81920 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.9.1.6
+C:\WINDOWS\SYSTEM32\MFPlat.DLL:MFPlat.DLL (00007FFFF4650000), size: 1818624 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.746
+C:\WINDOWS\SYSTEM32\MFReadWrite.dll:MFReadWrite.dll (00007FFFD4570000), size: 1089536 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.746
+C:\WINDOWS\SYSTEM32\MF.dll:MF.dll (00007FFFD52F0000), size: 540672 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\SYSTEM32\CONCRT140.dll:CONCRT140.dll (00007FFFDAC40000), size: 331776 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 14.0.24215.1
+C:\WINDOWS\SYSTEM32\MFCORE.DLL:MFCORE.DLL (00007FFFC93C0000), size: 4780032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1706
+C:\WINDOWS\SYSTEM32\powrprof.dll:powrprof.dll (00007FF8196B0000), size: 307200 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\ksuser.dll:ksuser.dll (00007FF815D60000), size: 36864 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1
+C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL:CRYPTBASE.DLL (00007FF819AB0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\RTWorkQ.DLL:RTWorkQ.DLL (00007FFFF73D0000), size: 217088 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\SYSTEM32\UMPDC.dll:UMPDC.dll (00007FF819520000), size: 73728 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRSRWorks\ViveOpenXRSRWorks.dll:ViveOpenXRSRWorks.dll (00007FFFE8900000), size: 155648 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.1.5.0
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRFacialTracking\ViveOpenXRFacialTracking.dll:ViveOpenXRFacialTracking.dll (00007FFFD42F0000), size: 167936 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.1.5.0
+C:\WINDOWS\SYSTEM32\USERENV.dll:USERENV.dll (00007FF819FE0000), size: 188416 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.572
+C:\WINDOWS\System32\DriverStore\FileRepository\nvdd.inf_amd64_bc75654a5d6f2376\nvldumdx.dll:nvldumdx.dll (00007FF803DE0000), size: 1073152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 30.0.15.1213
+C:\WINDOWS\SYSTEM32\msasn1.dll:msasn1.dll (00007FF819CD0000), size: 73728 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\cryptnet.dll:cryptnet.dll (00007FF8138D0000), size: 200704 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.906
+C:\WINDOWS\SYSTEM32\drvstore.dll:drvstore.dll (00007FF813700000), size: 1343488 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\SYSTEM32\devobj.dll:devobj.dll (00007FF819EB0000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+C:\WINDOWS\System32\WINTRUST.DLL:WINTRUST.DLL (00007FF81A0E0000), size: 425984 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\System32\imagehlp.dll:imagehlp.dll (00007FF81C430000), size: 118784 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1415
+C:\WINDOWS\SYSTEM32\CRYPTSP.dll:CRYPTSP.dll (00007FF819A90000), size: 98304 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\system32\rsaenh.dll:rsaenh.dll (00007FF8191B0000), size: 212992 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1052
+C:\WINDOWS\System32\DriverStore\FileRepository\nvdd.inf_amd64_bc75654a5d6f2376\nvwgf2umx.dll:nvwgf2umx.dll (00007FFFDD600000), size: 43286528 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 30.0.15.1213
+C:\WINDOWS\system32\nvspcap64.dll:nvspcap64.dll (00007FFFCF270000), size: 2895872 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 3.23.0.74
+C:\WINDOWS\SYSTEM32\ntmarta.dll:ntmarta.dll (00007FF818DE0000), size: 208896 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\dxcore.dll:dxcore.dll (00007FF814870000), size: 241664 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\clbcatq.dll:clbcatq.dll (00007FF81B1B0000), size: 692224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2001.12.10941.16384
+C:\WINDOWS\system32\wbem\wbemprox.dll:wbemprox.dll (00007FF813500000), size: 69632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1320
+C:\WINDOWS\SYSTEM32\wbemcomn.dll:wbemcomn.dll (00007FF811CE0000), size: 589824 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\system32\wbem\wbemsvc.dll:wbemsvc.dll (00007FF8116B0000), size: 81920 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1320
+C:\WINDOWS\system32\wbem\fastprox.dll:fastprox.dll (00007FF8116D0000), size: 1093632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\amsi.dll:amsi.dll (00007FF811580000), size: 131072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.2205.7-0\MpOav.dll:MpOav.dll (00007FFFD3170000), size: 503808 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 4.18.2205.7
+C:\WINDOWS\System32\MMDevApi.dll:MMDevApi.dll (00007FF814330000), size: 544768 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1503
+C:\WINDOWS\SYSTEM32\AUDIOSES.DLL:AUDIOSES.DLL (00007FF8143C0000), size: 1581056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\SYSTEM32\resourcepolicyclient.dll:resourcepolicyclient.dll (00007FF817BF0000), size: 81920 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRFacialTracking\SRanipal.dll:SRanipal.dll (00007FFFFAA30000), size: 114688 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.3.5.1
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRFacialTracking\libHTC_License.dll:libHTC_License.dll (00007FFFD4270000), size: 151552 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.3.5.1
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRFacialTracking\ViveSR_Client.dll:ViveSR_Client.dll (00007FFFF1A10000), size: 114688 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.3.5.1
+C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL:IPHLPAPI.DLL (00007FF819540000), size: 241664 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\NETAPI32.dll:NETAPI32.dll (00007FF8087E0000), size: 106496 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\SYSTEM32\WININET.dll:WININET.dll (00007FF80EBE0000), size: 5070848 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 11.0.19041.1566
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRFacialTracking\nanomsg.dll:nanomsg.dll (00007FFFD1B00000), size: 331776 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXRFacialTracking\SRWorks_Log.dll:SRWorks_Log.dll (00007FFFF1870000), size: 110592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.0.0.3
+C:\WINDOWS\SYSTEM32\NETUTILS.DLL:NETUTILS.DLL (00007FF8196A0000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\MSWSOCK.dll:MSWSOCK.dll (00007FF8198A0000), size: 434176 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\SRVCLI.DLL:SRVCLI.DLL (00007FF80DB00000), size: 163840 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1645
+D:\PC\HQVRMeeting_Data\Plugins\x86_64\openxr_loader.dll:openxr_loader.dll (00007FFF96D70000), size: 2158592 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.6.0
+D:\PC\HQVRMeeting_Data\Plugins\x86_64\openxr_runtime_debugger.dll:openxr_runtime_debugger.dll (00007FFFD1BB0000), size: 569344 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR_openxr\ViveOpenXR.dll:ViveOpenXR.dll (00007FFFC9C60000), size: 876544 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.1.9.1
+C:\WINDOWS\SYSTEM32\pdh.dll:pdh.dll (00007FF800400000), size: 299008 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1202
+C:\WINDOWS\SYSTEM32\vulkan-1.dll:vulkan-1.dll (00007FFFC98E0000), size: 1445888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.3.198.1
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR\ViveVRSDK\win64\ViveVRSDK.dll:ViveVRSDK.dll (00007FF80C220000), size: 77824 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.0.32
+C:\Program Files (x86)\VIVE\Updater\App\ViveVRRuntime\ViveVR\ViveVRSDK\win64\ViveVRSDKCore.dll:ViveVRSDKCore.dll (00007FFFD4B10000), size: 897024 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 1.0.7.3
+C:\WINDOWS\SYSTEM32\WTSAPI32.dll:WTSAPI32.dll (00007FF814790000), size: 81920 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\WINSTA.dll:WINSTA.dll (00007FF818E50000), size: 368640 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\perfos.dll:perfos.dll (00007FF8022C0000), size: 61440 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.488
+C:\WINDOWS\SYSTEM32\xinput1_4.dll:xinput1_4.dll (00007FFFEBBB0000), size: 69632 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.844
+C:\WINDOWS\SYSTEM32\inputhost.dll:inputhost.dll (00007FF806800000), size: 1384448 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.906
+C:\WINDOWS\SYSTEM32\wintypes.dll:wintypes.dll (00007FF816CE0000), size: 1392640 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1682
+C:\WINDOWS\SYSTEM32\PROPSYS.dll:PROPSYS.dll (00007FF815A30000), size: 1007616 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.19041.1023
+C:\WINDOWS\SYSTEM32\CoreMessaging.dll:CoreMessaging.dll (00007FF817810000), size: 991232 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.746
+C:\WINDOWS\SYSTEM32\CoreUIComponents.dll:CoreUIComponents.dll (00007FF8173B0000), size: 3530752 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\xinput1_3.dll:xinput1_3.dll (0000000000400000), size: 122880 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 9.18.944.0
+C:\WINDOWS\SYSTEM32\dcomp.dll:dcomp.dll (00007FF816E40000), size: 1986560 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1566
+C:\WINDOWS\SYSTEM32\dwmapi.dll:dwmapi.dll (00007FF817EF0000), size: 192512 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.746
+C:\WINDOWS\SYSTEM32\textinputframework.dll:textinputframework.dll (00007FF8021C0000), size: 1019904 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+D:\PC\HQVRMeeting_Data\Plugins\x86_64\ZXSdk.dll:ZXSdk.dll (00007FFF94940000), size: 14221312 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 0.2.0.2
+C:\WINDOWS\SYSTEM32\Secur32.dll:Secur32.dll (00007FFFEC350000), size: 49152 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\msdmo.dll:msdmo.dll (00007FF802020000), size: 45056 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1
+C:\WINDOWS\SYSTEM32\SSPICLI.DLL:SSPICLI.DLL (00007FF819FA0000), size: 204800 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1586
+C:\Windows\System32\mfwmaaec.dll:mfwmaaec.dll (00007FFFCC8D0000), size: 487424 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1
+C:\WINDOWS\SYSTEM32\Avrt.dll:Avrt.dll (00007FF80F420000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\Windows\System32\Windows.UI.dll:Windows.UI.dll (00007FF807CE0000), size: 1314816 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.746
+C:\Windows\System32\WindowManagementAPI.dll:WindowManagementAPI.dll (00007FF808FD0000), size: 659456 (result: 0), SymType: '-deferred-', PDB: ''
+C:\Windows\System32\twinapi.appcore.dll:twinapi.appcore.dll (00007FF808D20000), size: 2101248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.964
+C:\WINDOWS\System32\NSI.dll:NSI.dll (00007FF81B260000), size: 32768 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.610
+C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL:dhcpcsvc6.DLL (00007FF813A10000), size: 94208 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL:dhcpcsvc.DLL (00007FF813E10000), size: 118784 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\DNSAPI.dll:DNSAPI.dll (00007FF819580000), size: 831488 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1620
+C:\Windows\System32\rasadhlp.dll:rasadhlp.dll (00007FF812FD0000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+D:\PC\MonoBleedingEdge\EmbedRuntime\MonoPosixHelper.dll:MonoPosixHelper.dll (00007FFFC9B90000), size: 815104 (result: 0), SymType: '-deferred-', PDB: ''
+
+========== OUTPUTTING STACK TRACE ==================
+
+0x00007FFF94AF49F4 (ZXSdk) getMicrophoneMute
+0x00007FFF94AF5D5F (ZXSdk) getMicrophoneMute
+0x00007FFF94AF5CAC (ZXSdk) getMicrophoneMute
+0x00007FF81AB07034 (KERNEL32) BaseThreadInitThunk
+0x00007FF81CA22651 (ntdll) RtlUserThreadStart
+
+========== END OF STACKTRACE ===========
+
+A crash has been intercepted by the crash handler. For call stack and other details, see the latest crash report generated in:
+ * C:/Users/vr/AppData/Local/Temp/HQCompany/HQVRMeeting/Crashes

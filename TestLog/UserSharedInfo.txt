@@ -1,0 +1,17 @@
+{
+  "wangkai1": {
+    "18": {
+      "dbid": 18,
+      "modelname": "1",
+      "filename": "wangkai1/1/t.zip",
+      "filepath": "C:/Users/vr/AppData/LocalLow/HQCompany/HQVRMeeting/t/Models/t.glb",
+      "previewfile": "wangkai1/1/t.jpg",
+      "previewfilepath": "C:/Users/vr/AppData/LocalLow/HQCompany/HQVRMeeting/t.jpg",
+      "descripfile": "",
+      "modelsize": 51325079,
+      "modeltype": 0,
+      "modelfiletype": "GLB",
+      "loadtype": 1
+    }
+  }
+}

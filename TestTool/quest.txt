@@ -1,0 +1,10 @@
+菜单问题
+3人以上两个管理员
+人物形象不好
+下载模型的时候 语音非常卡
+17.13 多人断线
+断线重连之后 模型跟着玩家到了大厅
+接受分享者没下载完模型，退出大厅，模型出现在大厅
+OVR Metric Tool 
+adb shell setprop debug.oculus.enableLiveMemoryProfiling 1
+adb shell setprop debug.oculus.omms.enableBT true
