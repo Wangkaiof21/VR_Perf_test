@@ -7,7 +7,7 @@ TEST_FLIE = "C:\\Users\\Administrator\\Desktop\\Perf_Test\\TestLog\\VRFrames1.cs
 
 
 class FPS:
-    def __int__(self, test_log_path=None, test_file=None):
+    def __init__(self, test_log_path=None, test_file=None):
         self.test_log_path = test_log_path if isinstance(test_log_path, str) else print(f"The {test_log_path} not str")
         self.test_file = test_file if os.path.exists(test_file) else print(f"The path {test_log_path} not file!")
 

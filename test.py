@@ -8,10 +8,5 @@
 #     get_data(csv_fp)
 #
 
-
-import numpy as np
-
-arr = np.array([[1, 2, 3, 4], [4, 5, 6, 7], [9, 10, 11, 23]])
-print(arr)
-arr2 = arr.reshape(4,3)
-print(arr2)
+a = 'Working Set - Private'
+print(a.upper())

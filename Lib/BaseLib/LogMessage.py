@@ -52,6 +52,6 @@ def LogMessage(level=LOG_INFO, module="NA", msg="NA", logger_name="Test_Message"
         [f'{color}{t}\t{level_name}\t[{module}]\t{row}{caller}{Style.RESET_ALL}' for row in str(msg).split("\n")])
     logger.log(level, log_msg)
 
-# if __name__ == '__main__':
-#     LogMessage(level=LOG_WARN, logger_name="None")
-#     # print(sys.exc_info()[2].tb_frame.f_back)
+if __name__ == '__main__':
+    LogMessage(level=LOG_INFO, logger_name="None")
+    # print(sys.exc_info()[2].tb_frame.f_back)
