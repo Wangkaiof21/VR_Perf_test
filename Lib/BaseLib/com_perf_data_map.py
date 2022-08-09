@@ -11,6 +11,7 @@ import sys
 import openpyxl
 from LogMessage import LogMessage, LOG_INFO, LOG_ERROR
 import matplotlib
+from com_matplotlib import DrawMap
 
 HANDLE_COUNT = 'Handle Count'
 PRIVATE_BYTES = 'Private Bytes'
@@ -78,7 +79,7 @@ class PerfData:
     def get_tsv_data(self, fp: str) -> dict:
         """
         获取tsv数据内容 新版功能数据
-        tsv 数据长这样"1491"，可能先需要strip()掉
+        tsv 数据长这样‘"1491"’，可能先需要strip()掉
         :param fp:
         :return:dict
         """
@@ -95,7 +96,7 @@ class PerfData:
                 for lines in tsv_data[1:-1]:
                     # 切割转换的时候要把双引号去掉
                     lines = [x.strip('"') for x in lines.split("\t")]
-                    # 去掉时间戳列 和把空的数字用0替换
+                    # 去掉时间戳列 和把空的数字用0替换 可能要保留时间戳
                     lines = ['0.00' if x == ' ' else x for x in lines[1:]]
                     # 要保留int类型数据，要保留小数点前的数据
                     lines = [int(x.split(".")[0]) for x in lines]
@@ -106,7 +107,8 @@ class PerfData:
             LogMessage(level=LOG_ERROR, module=f"get_tsv_data", msg=f"Error => {e}")
         return tsv_file_datas
 
-    def get_csv_data(self, fp: str) -> dict:
+    @staticmethod
+    def get_csv_data(fp: str) -> dict:
         """
         解析csv 为0为空都直接转化成0
         :param fp:
@@ -140,11 +142,13 @@ class PerfData:
             file_full_data = dict(list(csv_.items()) + list(tsv_.items()))
             files[file_name] = file_full_data
             all_files.append(files)
+
         return all_files
 
-    def convert_tsv_data(self, tsv_data: dict) -> dict:
+    @staticmethod
+    def convert_tsv_data(tsv_data: dict) -> dict:
         """
-        处理数据 需要做合并
+        处理tsv数据 需要做合并
         :param tsv_data:
         :return:
         """
@@ -161,7 +165,7 @@ class PerfData:
             processor_time.append(pt_data)
             hc_data = line.get(HANDLE_COUNT, 0)
             handle_count.append(hc_data)
-            # bytes 转成 mb
+            # 私有内存因为是bytes 转成 mb
             pb_data = line.get(PRIVATE_BYTES, 0) // 1024 // 1024
             private_bytes.append(pb_data)
             vb_data = line.get(VIRTUAL_BYTES, 0) // 1024 // 1024
@@ -179,9 +183,10 @@ class PerfData:
         tsv_map_data[WORKING_SET_PRIVATE] = working_set_private
         return tsv_map_data
 
-    def convert_csv_data(self, csv_data: dict) -> dict:
+    @staticmethod
+    def convert_csv_data(csv_data: dict) -> dict:
         """
-
+        把fps文件里的数据处理一下
         :param csv_data:
         :return:
         """
@@ -189,7 +194,21 @@ class PerfData:
         fps_["fps"] = list(csv_data)[0]
         return fps_
 
+    def draw_map(self):
+        """
+        获得数据 在每一个原始文件的目录下新建一个文件夹或者直接以散装图片的方式塞进去
+        :return:
+        """
+        datas = self.tsv_csv_data_fusion()
+        map_ = DrawMap()
+
+        for files in datas:
+            (key, value), = files.items()
+            for i, d in value.items():
+                map_.get_plot(d, d, i, show=False)
+            break
+
 
 FP = "C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\perf_data"
 perf = PerfData(FP, "pc")
-perf.tsv_csv_data_fusion()
+perf.draw_map()
