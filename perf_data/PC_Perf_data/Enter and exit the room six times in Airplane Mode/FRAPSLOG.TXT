@@ -1,0 +1,6 @@
+2022-08-10 11:15:37 - HQVRMeeting
+Frames: 6654 - Time: 116812ms - Avg: 56.963 - Min: 0 - Max: 62
+
+2022-08-10 11:17:35 - HQVRMeeting
+Frames: 26600 - Time: 472906ms - Avg: 56.248 - Min: 0 - Max: 61
+

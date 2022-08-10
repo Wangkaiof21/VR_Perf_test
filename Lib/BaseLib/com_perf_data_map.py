@@ -7,6 +7,7 @@
 """
 
 import os
+import re
 import sys
 import openpyxl
 from LogMessage import LogMessage, LOG_INFO, LOG_ERROR
@@ -19,6 +20,7 @@ PROCESSOR_TIME = 'Processor Time'
 VIRTUAL_BYTES = 'Virtual Bytes'
 WORKING_SET = 'Working Set'
 WORKING_SET_PRIVATE = 'Working Set - Private'
+Committed_Bytes_In_Use = 'Committed Bytes In Use'
 
 
 class PerfData:
@@ -76,7 +78,8 @@ class PerfData:
             test_case_.append(test_case_datas)
         return test_case_
 
-    def get_tsv_data(self, fp: str) -> dict:
+    @staticmethod
+    def get_tsv_data(fp: str) -> dict:
         """
         获取tsv数据内容 新版功能数据
         tsv 数据长这样‘"1491"’，可能先需要strip()掉
@@ -93,16 +96,28 @@ class PerfData:
             with open(fp, "r", encoding="utf-8") as r:
                 tsv_data = r.read()
                 tsv_data = tsv_data.split("\n")
+                # 处理头部数据 列名先要分离出数据名 再把上级名字和带有电脑启用日期的数据去掉
+                header_line = tsv_data[0].replace('"\t"', '').replace('"', '')
+                header_line = header_line[16:].split("\\")
+                header_line = [x for x in header_line if x != '']
+                header_ = list()
+                for index in range(len(header_line)):
+                    if any([x.isdigit() for x in header_line[index]]) is False and header_line[index] \
+                            != 'Process(HQVRMeeting)' and "Memory" not in header_line[index]:
+                        header_.append(header_line[index])
                 for lines in tsv_data[1:-1]:
                     # 切割转换的时候要把双引号去掉
                     lines = [x.strip('"') for x in lines.split("\t")]
-                    # 去掉时间戳列 和把空的数字用0替换 可能要保留时间戳
+                    # 保留时间戳
+                    time_line = lines[0].split(" ")[-1].split(".")[0]
+                    # 去掉时间戳列 和把空的数字用0替换
                     lines = ['0.00' if x == ' ' else x for x in lines[1:]]
                     # 要保留int类型数据，要保留小数点前的数据
                     lines = [int(x.split(".")[0]) for x in lines]
-                    line = dict(zip(self.TSV_INDEX, lines))
+                    line = dict(zip(header_, lines))
+                    line["time"] = time_line
                     file_lines.append(line)
-            tsv_file_datas[dir_name] = file_lines
+                tsv_file_datas[dir_name] = file_lines
         except Exception as e:
             LogMessage(level=LOG_ERROR, module=f"get_tsv_data", msg=f"Error => {e}")
         return tsv_file_datas
@@ -137,13 +152,16 @@ class PerfData:
         for lines in full_datas:
             files = dict()
             file_name = list(lines.get("csv_data", None).keys())[0]
-            csv_ = self.convert_csv_data(lines.get("csv_data", None).values())
-            tsv_ = self.convert_tsv_data(lines.get("tsv_data", None).values())
-            file_full_data = dict(list(csv_.items()) + list(tsv_.items()))
-            files[file_name] = file_full_data
-            all_files.append(files)
-
-        return all_files
+            print(lines)
+            break
+        #     # 这里出错了
+        #     csv_ = self.convert_csv_data(lines.get("csv_data", None).values())
+        #     tsv_ = self.convert_tsv_data(lines.get("tsv_data", None).values())
+        #     file_full_data = dict(list(csv_.items()) + list(tsv_.items()))
+        #     files[file_name] = file_full_data
+        #     all_files.append(files)
+        # print(all_files)
+        # return all_files
 
     @staticmethod
     def convert_tsv_data(tsv_data: dict) -> dict:
@@ -205,10 +223,11 @@ class PerfData:
         for files in datas:
             (key, value), = files.items()
             for i, d in value.items():
-                map_.get_plot(d, d, i, show=False)
+                map_.get_plot(d, d, i, show=True, line_style='solid')
             break
 
 
 FP = "C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\perf_data"
 perf = PerfData(FP, "pc")
-perf.draw_map()
+# perf.draw_map()
+perf.tsv_csv_data_fusion()
