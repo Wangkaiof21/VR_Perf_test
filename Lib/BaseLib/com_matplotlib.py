@@ -1,6 +1,8 @@
 """
 封装一个matplotlib的类 能实现绘制折线，柱状，饼图
 """
+import os
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,26 +14,53 @@ class DrawMap:
         matplotlib.rcParams['font.family'] = "sans-serif"
         matplotlib.rcParams['font.sans-serif'] = ['SimHei']
 
-    def get_plot(self, x_list, y_list, title, save=True, grid_index=True, show=True, line_style=None) -> None:
+    def get_plot(self, x_list, y_list, title, x_label="x轴", y_label="y轴", save=True, grid_index=True, show=True,
+                 line_style=None, path=None, line_color=None, x_lim=False, legend_index=None, x_ticks_nums=None,
+                 x_ticks_list=None) -> None:
         """
         接收特定数据绘制折线图 考虑到以后多重样本可能要做for循环绘制在一张图
+        :param x_ticks_list: x轴刻度专用list
+        :param x_ticks_nums: x轴刻度数量
+        :param legend_index:图例
+        :param x_lim: 控制x轴间隔数 输入列表的最大最小值
+        :param line_color: 线条颜色
+        :param y_label:刻度属性名字
+        :param x_label:刻度属性名字
+        :param path: 存储路径
         :param line_style: 线条形态 => '-', '--', '-.', ':', 'None', ' ', '', 'solid', 'dashed', 'dashdot', 'dotted'
         :param show: 是否展示
         :param grid_index: 网格线
         :param save:是否保存
         :param x_list:x轴内容 时间戳
         :param y_list:y轴内容 主数据
-        :param title:
+        :param title:图片名字
         :return:
         """
-        index = np.arange(len(x_list))
+
         # 设置画板大小
-        plt.figure(figsize=(10, 10))
+        fig, ax = plt.subplots(figsize=(16, 12))
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
         plt.title(f"{title}测试折线图")
-        plt.xticks(index, x_list)
+        "x刻度和x生成轴的是不一样的 刻度需要数量和固定内容 生成轴的则需要列表推导式"
+        x_index = np.arange(len(x_list))
+        if x_ticks_nums and x_ticks_list:
+            plt.xticks(x_ticks_nums, x_ticks_list)
+        else:
+            plt.xticks(x_index, x_list)
+        # print(repr(x_index))
         if grid_index:
             plt.grid(grid_index, axis="y", linestyle=line_style, alpha=0.5)
-        plt.plot(index, y_list)
+        plt.plot(x_index, y_list, color=line_color, lw=5, marker="o", markersize=4.5,
+                 markerfacecolor="red", markeredgewidth=2, markeredgecolor="grey")
+        plt.legend(legend_index, )
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
         if show:
             plt.show()
+        if save and path:
+            # if not os.path.exists(path):
+            #     os.mkdir(path)
+            # else:
+            plt.savefig(path)
         plt.close()

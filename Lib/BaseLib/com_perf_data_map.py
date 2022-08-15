@@ -16,11 +16,13 @@ from com_matplotlib import DrawMap
 
 HANDLE_COUNT = 'Handle Count'
 PRIVATE_BYTES = 'Private Bytes'
-PROCESSOR_TIME = 'Processor Time'
+PROCESSOR_TIME = '% Processor Time'
 VIRTUAL_BYTES = 'Virtual Bytes'
 WORKING_SET = 'Working Set'
 WORKING_SET_PRIVATE = 'Working Set - Private'
-Committed_Bytes_In_Use = 'Committed Bytes In Use'
+COMMITTED_BYTES = '% Committed Bytes In Use'
+DATE_VALUE = 'time'
+FPS = 'fps'
 
 
 class PerfData:
@@ -30,9 +32,10 @@ class PerfData:
         :param fp:
         :param index:
         """
+        self.flag = index
         self.base_dir = fp if os.path.exists(fp) else LogMessage(level=LOG_ERROR, module="get_tsv_data",
                                                                  msg="path dose not exist")
-        self.file_path = os.path.join(self.base_dir, "PC_Perf_data") if index == "pc" else os.path.join(self.base_dir,
+        self.file_path = os.path.join(self.base_dir, "PC_Perf_data") if self.flag == "pc" else os.path.join(self.base_dir,
                                                                                                         "VR_Perf_data")
         self.TSV_INDEX = ["Processor Time", "Handle Count", "Private Bytes", "Virtual Bytes", "Working Set",
                           "Working Set - Private"]
@@ -43,19 +46,34 @@ class PerfData:
         :return:
         """
         test_collector = list()
-        try:
-            for test_file in os.listdir(self.file_path):
-                test_file_dir = os.path.join(self.file_path, test_file)
-                files_ = list()
-                for root, dirs, files in os.walk(test_file_dir):
-                    for file_name in files:
-                        if "DataCollector" in file_name or "fps" in file_name:
+        if self.flag == "pc":
+            try:
+                for test_file in os.listdir(self.file_path):
+                    test_file_dir = os.path.join(self.file_path, test_file)
+                    files_ = list()
+                    for root, dirs, files in os.walk(test_file_dir):
+                        for file_name in files:
+                            if "DataCollector" in file_name or "fps" in file_name:
+                                file_full_dir = os.path.join(root, file_name)
+                                files_.append(file_full_dir)
+                                # LogMessage(level=LOG_ERROR, module="get_file_path", msg=f"Error => {file_full_dir}")
+                    test_collector.append(files_)
+            except Exception as e:
+                LogMessage(level=LOG_ERROR, module="get_file_path", msg=f"Error => {e}")
+        elif self.flag == "vr":
+            try:
+                for test_file in os.listdir(self.file_path):
+                    test_file_dir = os.path.join(self.file_path, test_file)
+                    files_ = list()
+                    for root, dirs, files in os.walk(test_file_dir):
+                        for file_name in files:
                             file_full_dir = os.path.join(root, file_name)
-                            files_.append(file_full_dir)
-                            # LogMessage(level=LOG_ERROR, module="get_file_path", msg=f"Error => {file_full_dir}")
-                test_collector.append(files_)
-        except Exception as e:
-            LogMessage(level=LOG_ERROR, module="get_file_path", msg=f"Error => {e}")
+                            print(file_full_dir)
+                    test_collector.append(files_)
+            except Exception as e:
+                LogMessage(level=LOG_ERROR, module="get_file_path", msg=f"Error => {e}")
+        else:
+            pass
         return test_collector
 
     def get_data_structure(self) -> list:
@@ -152,16 +170,12 @@ class PerfData:
         for lines in full_datas:
             files = dict()
             file_name = list(lines.get("csv_data", None).keys())[0]
-            print(lines)
-            break
-        #     # 这里出错了
-        #     csv_ = self.convert_csv_data(lines.get("csv_data", None).values())
-        #     tsv_ = self.convert_tsv_data(lines.get("tsv_data", None).values())
-        #     file_full_data = dict(list(csv_.items()) + list(tsv_.items()))
-        #     files[file_name] = file_full_data
-        #     all_files.append(files)
-        # print(all_files)
-        # return all_files
+            csv_ = self.convert_csv_data(lines.get("csv_data", None).values())
+            tsv_ = self.convert_tsv_data(lines.get("tsv_data", None).values())
+            file_full_data = dict(list(csv_.items()) + list(tsv_.items()))
+            files[file_name] = file_full_data
+            all_files.append(files)
+        return all_files
 
     @staticmethod
     def convert_tsv_data(tsv_data: dict) -> dict:
@@ -177,12 +191,18 @@ class PerfData:
         virtual_bytes = list()
         working_set = list()
         working_set_private = list()
+        committed_bytes = list()
         processor_time = list()
+        time_list = list()
         for line in tsv_data:
             pt_data = line.get(PROCESSOR_TIME, 0)
             processor_time.append(pt_data)
             hc_data = line.get(HANDLE_COUNT, 0)
             handle_count.append(hc_data)
+            memory_data = line.get(COMMITTED_BYTES, 0)
+            committed_bytes.append(memory_data)
+            date_ = line.get(DATE_VALUE, 0)
+            time_list.append(date_)
             # 私有内存因为是bytes 转成 mb
             pb_data = line.get(PRIVATE_BYTES, 0) // 1024 // 1024
             private_bytes.append(pb_data)
@@ -199,6 +219,8 @@ class PerfData:
         tsv_map_data[VIRTUAL_BYTES] = virtual_bytes
         tsv_map_data[WORKING_SET] = working_set
         tsv_map_data[WORKING_SET_PRIVATE] = working_set_private
+        tsv_map_data[COMMITTED_BYTES] = committed_bytes
+        tsv_map_data[DATE_VALUE] = time_list
         return tsv_map_data
 
     @staticmethod
@@ -215,19 +237,42 @@ class PerfData:
     def draw_map(self):
         """
         获得数据 在每一个原始文件的目录下新建一个文件夹或者直接以散装图片的方式塞进去
+        pc数据是分离的 得组合后在处理
         :return:
         """
         datas = self.tsv_csv_data_fusion()
         map_ = DrawMap()
-
+        image_fp_ = "C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\perf_image"
         for files in datas:
             (key, value), = files.items()
-            for i, d in value.items():
-                map_.get_plot(d, d, i, show=True, line_style='solid')
-            break
+            image_save_path = f"{image_fp_}\\PC_image\\{key} image"
+            # print(image_save_path)
+            if os.path.exists(image_save_path):
+                os.remove(image_save_path)
+                os.makedirs(image_save_path)
+            else:
+                os.makedirs(image_save_path)
+            fps_data = value.get(FPS)
+            fps_name = f"{key} {FPS}.png"
+            map_.get_plot(x_list=fps_data, y_list=fps_data, title=FPS, show=False, line_style='solid', x_label="second",
+                          y_label="fps/s", legend_index=(FPS,), save=True, path=f"{image_save_path}\\{fps_name}")
+            # print(f"{image_save_path}\\{fps_name}")
+            del value[FPS]
+            file_time = value[DATE_VALUE]
+            del value[DATE_VALUE]
+            for name, values in value.items():
+                # print(f"{image_save_path}\\{name}.png")
+                map_.get_plot(x_list=file_time, y_list=values, title=name, show=False, line_style='solid',
+                              x_label="time/s",
+                              y_label="fluctuation/s", x_lim=True, legend_index=(name,),
+                              x_ticks_list=[file_time[0], file_time[-1]], x_ticks_nums=[0, len(file_time)], save=True,
+                              path=f"{image_save_path}\\{name}.png")
+
 
 
 FP = "C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\perf_data"
-perf = PerfData(FP, "pc")
+# perf = PerfData(FP, "pc")
 # perf.draw_map()
-perf.tsv_csv_data_fusion()
+perf = PerfData(FP, "vr")
+perf.get_file_collector()
+
