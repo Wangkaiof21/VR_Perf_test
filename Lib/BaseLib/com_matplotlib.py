@@ -42,7 +42,11 @@ class DrawMap:
         plt.xlabel(x_label)
         plt.ylabel(y_label)
         plt.title(f"{title}测试折线图")
-        "x刻度和x生成轴的是不一样的 刻度需要数量和固定内容 生成轴的则需要列表推导式"
+        """
+        x刻度和x生成轴的是不一样的 刻度需要数量和固定内容 生成轴的则需要列表推导式 
+        比如说这边nums是输入x刻度要显示的数量 ，x刻度list里面就必须要有多少个相对应的值
+        nums = [0,999] x_list=[0,1,2,3,......,999]
+        """
         x_index = np.arange(len(x_list))
         if x_ticks_nums and x_ticks_list:
             plt.xticks(x_ticks_nums, x_ticks_list)
