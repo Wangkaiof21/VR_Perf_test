@@ -10,6 +10,7 @@ import random
 import signal
 import sys
 from LogMessage import LogMessage, LOG_WARN, LOG_INFO, LOG_ERROR
+
 """
 数据库压测
 使用faker制造假数据往数据库里面插入假数据
@@ -75,6 +76,24 @@ def insert_table(sql_host, sql_port, sql_user, sql_pass_word, db_name, action, t
             break
         if int(table_index) > int(table_count):
             break
+        table_name = str(table_base_name) + str(table_index)
+        LogMessage(level=LOG_INFO, module='insert_table', msg=f'process: {p} 往 {table_name} 插入 {tab_rows} 行... ')
+        rest_of_rows = tab_rows
+        while rest_of_rows > 0:
+            run_rows = table_per_commit if rest_of_rows > table_per_commit else rest_of_rows
+            values = ""
+            for x in range(0, run_rows):
+                k = random.randint(1, tab_rows - 20)
+                values += ",('{k}','{c}','{c2}')".format(k=random.randint(1, tab_rows - 20), c=fake.text(100),
+                                                         c2=fake.text(50))
+            sql = f"insert into {table_name}(k,c,c2) values{values[1:]}"
+            # sql = "insert into {table_name}(k,c,c2) values{values}".format(table_name=table_name, values=values[1:])
+            cursor.execute("begin;")
+            cursor.execute(sql)
+            cursor.execute("commit")
+            rest_of_rows -= table_per_commit
+        # 本来想顺便把索引创建了的 结果会产生metadata look 锁 ，原因是建表后没提交 虽然其他表能查到索引和数据
+
 
 
 def _argparse():

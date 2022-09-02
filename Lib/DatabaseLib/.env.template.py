@@ -1,0 +1,25 @@
+# List of databases that you want to test. They should be up and running before you start the benchmark
+# Currently possible entries: MONGO, MYSQL, NANODB, POSTGRES,
+DATABASES = NANODB,POSTGRES,MONGO
+
+# MongoDB section
+MONGO_HOST=localhost
+MONGO_PORT=27017
+
+# MySQL section
+MYSQL_USER=benchmark
+MYSQL_PASSWORD=qwerty
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DB=benchmark
+
+# PostgreSQL section
+POSTGRES_USER=benchmark
+POSTGRES_PASSWORD=qwerty
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=benchmark
+
+# Number of tests in each category to calculate average from
+N_TESTS = 1000
+

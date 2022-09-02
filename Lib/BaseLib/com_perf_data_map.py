@@ -171,12 +171,12 @@ class PerfData:
             if case_name == "login":
                 break
             else:
-                file.get(case_name)[CPU_USED] = file.get(case_name).get(CPU_USED)[60:-20]
-                file.get(case_name)[FPS_] = file.get(case_name).get(FPS_)[60:-20]
-                file.get(case_name)[PSS_MEMORY] = file.get(case_name).get(PSS_MEMORY)[60:-20]
-                file.get(case_name)[USS_MEMORY] = file.get(case_name).get(USS_MEMORY)[60:-20]
-                file.get(case_name)[TIME_STAMP] = file.get(case_name).get(TIME_STAMP)[60:-20]
-                file.get(case_name)[BATTERY_PERCENT] = file.get(case_name).get(BATTERY_PERCENT)[60:-20]
+                file.get(case_name)[CPU_USED] = file.get(case_name).get(CPU_USED)[50:-20]
+                file.get(case_name)[FPS_] = file.get(case_name).get(FPS_)[50:-20]
+                file.get(case_name)[PSS_MEMORY] = file.get(case_name).get(PSS_MEMORY)[50:-20]
+                file.get(case_name)[USS_MEMORY] = file.get(case_name).get(USS_MEMORY)[50:-20]
+                file.get(case_name)[TIME_STAMP] = file.get(case_name).get(TIME_STAMP)[50:-20]
+                file.get(case_name)[BATTERY_PERCENT] = file.get(case_name).get(BATTERY_PERCENT)[50:-20]
                 # 原始数据 对比用
                 # file.get(case_name)[CPU_USED] = file.get(case_name).get(CPU_USED)
                 # file.get(case_name)[FPS_] = file.get(case_name).get(FPS_)
