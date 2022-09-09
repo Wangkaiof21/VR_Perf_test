@@ -95,7 +95,6 @@ def insert_table(sql_host, sql_port, sql_user, sql_pass_word, db_name, action, t
         # 本来想顺便把索引创建了的 结果会产生metadata look 锁 ，原因是建表后没提交 虽然其他表能查到索引和数据
 
 
-
 def _argparse():
     """
     argparse.ArgumentParser创建一个命令行参数对象
@@ -142,8 +141,54 @@ def _argparse():
     return args
 
 
-def main():
-    pass
+def main(host, port, user, passwd, db_name, action, table_base_name, table_rows, table_per_commit, table_thread, log,
+         runtime, report_interval, table_count, mode, ):
+    """
+    事务参考sysbench
+    读写混合事务 只读+只写
+    :param host:
+    :param port:
+    :param user:
+    :param passwd:
+    :param db_name:
+    :param action:动作
+    :param table_base_name:表名
+    :param table_rows:每张表的数据量
+    :param table_per_commit:
+    :param table_thread:
+    :param log:
+    :param runtime:
+    :param report_interval:
+    :param table_count:表数量
+    :param mode:0 读写  1 仅读  2仅写
+    :return:
+    """
+    conn = get_connect(sql_host=host, sql_port=port, sql_user=user, sql_password=passwd, sql_db_name=db_name)
+    cursor = conn.cursor()
+    if action == "prepare":
+        LogMessage(level=LOG_INFO, module="mian", msg="开始创建")
+        for table_index in range(1, table_count + 1):
+            table_name = f"{table_base_name}{table_index}"
+            cursor.execute(f'''
+  CREATE TABLE IF NOT EXISTS `{table_name}` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `k` int(11) NOT NULL DEFAULT '0',
+  `c` char(120) NOT NULL DEFAULT '',
+  `c2` char(60) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) /*! ENGINE = innodb */
+/*!*/;
+			''')
+            LogMessage(level=LOG_INFO, module="main", msg=f"make table {db_name}.{table_name} success!")
+            cursor.execute(f"select count(*) from {db_name}.{table_name}")
+            if int(cursor.fetchall()[0][0]) > 0:
+                LogMessage(level=LOG_ERROR, module="main", msg=f"{db_name}.{table_name} 已存在数据, 请先清空, 或者换个名字!")
+                sys.exit(1)
+            # 这里不加commit的话, 多进程最后一张表就无法创建索引
+            cursor.execute("commit")
+            queue = Queue(table_count * 2)
+            for index in range(1, table_count * 2 + 1):
+                queue.put(index)
 
 
 if __name__ == '__main__':
@@ -162,4 +207,8 @@ if __name__ == '__main__':
     #     main(parser.host, parser.port, parser.user, parser.password, parser.dbname, parser.action, parser.table_name,
     #          parser.table_rows, parser.insert_per_commit, parser.thread, parser.log, parser.runtime,
     #          parser.report_interval, parser.table_count, parser.mode)
-    _argparse()
+    parser = _argparse()
+    if parser.version:
+        LogMessage(level=LOG_WARN, module="main", msg=f"Version:{VERSION}")
+    else:
+        main(parser.host)
