@@ -384,7 +384,7 @@ class PerfData:
                 # print(values)
                 for key, value in values.items():
                     # print("dddd", key, value, len(file_time), len(value))
-                    map_.get_plot(x_list=file_time, y_list=value, title=key, show=False, line_style='solid',
+                    map_.get_plot(x_list=file_time, y_list=value, title=key, show=True, line_style='solid',
                                   x_label="time/s",
                                   y_label="fluctuation/s", x_lim=True, legend_index=(key,),
                                   x_ticks_list=[file_time[0], file_time[-1]], x_ticks_nums=[0, len(file_time)],
