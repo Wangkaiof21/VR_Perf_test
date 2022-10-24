@@ -3,10 +3,14 @@ import re
 import sys
 import inspect
 import numpy as np
-from LogMessage import LogMessage, LOG_ERROR, LOG_RUN_INFO
-from com_matplotlib import DrawMap
 import shutil
-from com_msg_center import MsgCenter
+from collections import defaultdict
+# from LogMessage import LogMessage, LOG_ERROR, LOG_RUN_INFO
+# from com_matplotlib import DrawMap
+from Lib.BaseLib.LogMessage import LogMessage, LOG_ERROR, LOG_RUN_INFO
+from Lib.BaseLib.com_matplotlib import DrawMap
+
+# from com_msg_center import MsgCenter
 import random
 
 # MODULE_NAME = os.path.splitext(os.path.basename(__file__))[0]
@@ -165,11 +169,28 @@ class PowerWashPerfData:
                 for key, value in line.items():
                     dict_[key] = value[0:index_]
                 new_list.append(dict_)
+            # 把重新封装的数据按照相同的key合并成在一个list内 做三折线一体图，做三次测试保证严谨度
+            dic = dict()
             for line in new_list:
-                for k, v in line.items():
-                    print(k,v)
-            print("\n\n\n")
 
+                for k, v in line.items():
+                    dic.setdefault(k, []).append(v)
+            del dic[self.VR_INDEX[-1]]
+            for key, val in dic.items():
+                print(key, val)
+
+
+            print("\n\n")
+
+            # for k, v in dic.items():
+            #     print(k, len(v))
+            # print("\n\n\n\n")
+
+
+# pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_PW_data",
+#                        file_num=20221018,
+#                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
+# pw.get_file_data()
 
 pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_PW_data",
                        file_num=20221018,

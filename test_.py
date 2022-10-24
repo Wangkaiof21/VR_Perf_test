@@ -1,7 +1,7 @@
 import os
 
-a = "KBE_RES_PATH = %KBE_ROOT%/kbe/res;%KBE_ROOT%/assets/;%KBE_ROOT%/assets/scripts;%KBE_ROOT%/assets/res/"
-b = a.replace("/", "\\")
+# a = "KBE_RES_PATH = %KBE_ROOT%/kbe/res;%KBE_ROOT%/assets/;%KBE_ROOT%/assets/scripts;%KBE_ROOT%/assets/res/"
+# b = a.replace("/", "\\")
 
 # class Adb:
 #     def __init__(self, fp):
@@ -34,7 +34,7 @@ b = a.replace("/", "\\")
 # adb.isMove = 1
 # print(adb.stop_())
 
-
+os.mkdir("C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
 data = [{'app_pss_MB': [285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285, 285,
                         1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148,
                         1148, 1148, 1148, 1148, 1151, 1151, 1151, 1151, 1151, 1151, 1151, 1151, 1151, 1151, 1151, 1151,
