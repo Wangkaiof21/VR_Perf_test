@@ -1,18 +1,13 @@
 import os
-import re
-import sys
 import inspect
 import numpy as np
 import shutil
-from collections import defaultdict
 # from LogMessage import LogMessage, LOG_ERROR, LOG_RUN_INFO
 # from com_matplotlib import DrawMap
 from Lib.BaseLib.LogMessage import LogMessage, LOG_ERROR, LOG_RUN_INFO
 from Lib.BaseLib.com_matplotlib import DrawMap
 
 # from com_msg_center import MsgCenter
-import random
-
 # MODULE_NAME = os.path.splitext(os.path.basename(__file__))[0]
 # MsgCenter(MODULE_NAME,level=LOG_DEBUG)
 np.set_printoptions(threshold=np.inf)
@@ -23,13 +18,14 @@ def get_func_name():
 
 
 class PowerWashPerfData:
-    def __init__(self, base_dir, file_num, save_dir):
+    def __init__(self, base_dir, file_num, save_dir, save_index=None):
         self.index = file_num
         self.file_path = base_dir if os.path.exists(base_dir) else LogMessage(level=LOG_ERROR, module=get_func_name(),
                                                                               msg="data path dose not exist")
         self.save_path = save_dir if os.path.exists(save_dir) else LogMessage(level=LOG_ERROR, module=get_func_name(),
                                                                               msg="save path dose not exist")
         self.perf_data_path = os.path.join(self.file_path, str(self.index))
+        self.save_index = save_index
         # TODO:关键字列表要从外层传入
         self.VR_INDEX = ['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB', 'battery_level_percentage',
                          'average_frame_rate', 'Time Stamp']
@@ -63,12 +59,8 @@ class PowerWashPerfData:
                 shutil.rmtree(clean_save_path)
         except Exception as e:
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"File error --> {e} !!!")
-        index = 0
         for case_name, val in files_.items():
-            self.draw_vr_power_wash_map(case_name, val, save_path=self.save_path)
-            index += 1
-            if index == 3:
-                break
+            self.draw_vr_power_wash_map(str(case_name), val, save_path=self.save_path)
         return files_
 
     def get_vr_csv_data(self, fp: str, split_num_start: int, split_num_end: int, show=None) -> dict:
@@ -153,7 +145,7 @@ class PowerWashPerfData:
                                   x_label="time/s",
                                   y_label="fluctuation/s", x_lim=True, legend_index=(key,),
                                   x_ticks_list=[file_time[0], file_time[-1]], x_ticks_nums=[0, len(file_time)],
-                                  save=False,
+                                  save=True,
                                   path=f"{image_save_path}\\{key}.png")
         elif flag > 1:
             # 取一个标准值当作裁剪值，不然会报错
@@ -162,7 +154,6 @@ class PowerWashPerfData:
                 min_index.append(line[self.VR_INDEX[-1]])
             index_ = len(min(min_index, key=len))
             # 重新封装 相同长度的数据
-            file_time = [x for x in range(len(perf_data[0].get(self.VR_INDEX[-1])[0:index_]))]
             new_list = list()
             for line in perf_data:
                 dict_ = dict()
@@ -172,19 +163,28 @@ class PowerWashPerfData:
             # 把重新封装的数据按照相同的key合并成在一个list内 做三折线一体图，做三次测试保证严谨度
             dic = dict()
             for line in new_list:
-
                 for k, v in line.items():
                     dic.setdefault(k, []).append(v)
+            file_time = [x for x in range(len(dic.get(self.VR_INDEX[-1])[0]))]
             del dic[self.VR_INDEX[-1]]
             for key, val in dic.items():
-                print(key, val)
+                # print(key, val)
+                map_.get_plots(x_list=val[0], y_list=val, title=key, show=False, line_style='solid',
+                               x_label="time/s",
+                               y_label="fluctuation/s", x_lim=True, legend_index=(key,),
+                               x_ticks_list=[file_time[0], file_time[-1]], x_ticks_nums=[0, len(file_time)],
+                               save=True,
+                               path=f"{image_save_path}\\{key}.png")
 
-
-            print("\n\n")
-
-            # for k, v in dic.items():
-            #     print(k, len(v))
-            # print("\n\n\n\n")
+            # lines = np.mat(np.array(a))
+            # 求每一个数据的平均
+            # z = list()
+            # for line in lines:
+            #     z.append(np.mean(line))
+            # 求每所有数据的平均
+            # print(np.sum(z) / len(lines))
+        else:
+            LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"Error!!")
 
 
 # pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_PW_data",
