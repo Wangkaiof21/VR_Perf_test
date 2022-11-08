@@ -150,9 +150,9 @@ class DatabaseURL:
         :return:
         """
         return (
-            self.components.hostname
-            or self.options.get("host")
-            or self.options.get("unix_sock")
+                self.components.hostname
+                or self.options.get("host")
+                or self.options.get("unix_sock")
         )
 
     @property
@@ -194,5 +194,60 @@ class DatabaseURL:
             path = path[1:]
         return unquote(path)
 
+    # def url_replace(self, **kwargs: typing.Any) -> typing.Any:
+    def url_replace(self, **kwargs: typing.Any) -> "DatabaseURL":
+        """
+        **kwargs的情况下，入参值的名字可以随便定义
+        把明文信息转换成*********
+        進來的kwargs是個字典
+        :param kwargs:
+        :return:
+        """
+
+        if (
+                "username" in kwargs
+                or "password" in kwargs
+                or "hostname" in kwargs
+                or "port" in kwargs
+        ):
+            hostname = kwargs.pop("hostname", self.hostname)
+            port = kwargs.pop("port", self.port)
+            username = kwargs.pop("username", self.components.username)
+            password = kwargs.pop("password", self.components.password)
+            netloc = hostname
+            if port is not None:
+                netloc += f":{port}"
+            if username is not None:
+                userpass = username
+                if password is not None:
+                    userpass += f":{password}"
+                netloc = f"{userpass}@{netloc}"
+            kwargs['netloc'] = netloc
+        if "database" in kwargs:
+            kwargs["path"] = "/" + kwargs.pop("database")
+        if "dialect" in kwargs or "driver" in kwargs:
+            dialect = kwargs.pop("dialect", self.dialect)
+            driver = kwargs.pop("driver", self.driver)
+            kwargs["scheme"] = f"{dialect}+{driver}" if driver else dialect
+        print(kwargs)
+
+    def obscure_password(self):
+        """
+        只要这里输入username,password,hostname,port
+        url_replace()方法就能
+        :return:
+        """
+        self.url_replace(password="********")
+
+    def test(self):
+        c = {"a1": "a2"}
+        c["a1"] = _EmptyNetloc()
+
+
+class _EmptyNetloc(str):
+    def __bool__(self) -> bool:
+        return True
+
+
 a1 = DatabaseURL("mysql://user:password@hostname/dbname?charset=uft8")
-print(a1.database)
+print(a1.test())

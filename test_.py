@@ -33,9 +33,10 @@ import os
 # adb = Adb_test()
 # adb.isMove = 1
 # print(adb.stop_())
+import typing
+def test(**kwargs:typing.Any):
+    print(kwargs)
+    return kwargs
+if __name__ == '__main__':
+    a = test(password=0)
 
-import click
-
-click.echo(click.style('Hello World!', fg='green'))
-click.echo(click.style('Some more text', bg='blue', fg='white'))
-click.echo(click.style('ATTENTION', blink=True, bold=True))
