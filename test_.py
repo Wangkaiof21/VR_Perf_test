@@ -1,5 +1,6 @@
 import os
 
+
 # a = "KBE_RES_PATH = %KBE_ROOT%/kbe/res;%KBE_ROOT%/assets/;%KBE_ROOT%/assets/scripts;%KBE_ROOT%/assets/res/"
 # b = a.replace("/", "\\")
 
@@ -33,10 +34,7 @@ import os
 # adb = Adb_test()
 # adb.isMove = 1
 # print(adb.stop_())
-import typing
-def test(**kwargs:typing.Any):
-    print(kwargs)
-    return kwargs
-if __name__ == '__main__':
-    a = test(password=0)
 
+a = "dsjakfbdsjhnlaaaaccc"
+b = {"a":1,"c":3}
+print(a._replace(b))

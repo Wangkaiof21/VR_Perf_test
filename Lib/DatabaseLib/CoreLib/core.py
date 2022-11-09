@@ -48,7 +48,19 @@ class Database:
     def __init__(self, url: typing.Union[str, "DatabaseURL"], *, force_rollback: bool = False, **options: typing.Any):
         # Union[str, "DatabaseURL"] 意思是可以传两种类型的值，Union的字符串或Union的数据库地址
         self.url = DatabaseURL(url)
-        pass
+        self.options = options
+        self.is_connected = False
+        self._force_rollback = force_rollback
+        backend_str = self._get_backend()
+
+    def _get_backend(self) -> str:
+        """
+        返回从字典get到的数据库类型
+        没有则返回
+        :return:
+        """
+        print(self.SUPPORTED_BACKENDS.get(self.url.scheme, self.SUPPORTED_BACKENDS[self.url.dialect]))
+        return self.SUPPORTED_BACKENDS.get(self.url.scheme, self.SUPPORTED_BACKENDS[self.url.dialect])
 
 
 class DatabaseURL:
@@ -229,25 +241,44 @@ class DatabaseURL:
             dialect = kwargs.pop("dialect", self.dialect)
             driver = kwargs.pop("driver", self.driver)
             kwargs["scheme"] = f"{dialect}+{driver}" if driver else dialect
-        print(kwargs)
+        if not kwargs.get("netloc", self.netloc):
+            kwargs["netloc"] = _EmptyNetloc()
+        components = self.components._replace(**kwargs)
+        return self.__class__(components.geturl())
 
-    def obscure_password(self):
+    @property
+    def obscure_password(self) -> str:
+        if self.password:
+            return self.url_replace(password="********")._url
+        return self._url
+
+    def __str__(self) -> str:
+        return self._url
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({repr(self.obscure_password)})"
+
+    def __eq__(self, other: typing.Any) -> bool:
         """
-        只要这里输入username,password,hostname,port
-        url_replace()方法就能
+        这个是判断值是否相等的 返回bool值
+        :param other:
         :return:
         """
-        self.url_replace(password="********")
-
-    def test(self):
-        c = {"a1": "a2"}
-        c["a1"] = _EmptyNetloc()
+        return str(self) == str(other)
 
 
 class _EmptyNetloc(str):
+    """
+    这个类传创建的对象在判断的时候全都为真
+    在其他方法判断是否存在的总是返回真
+    """
+
     def __bool__(self) -> bool:
         return True
 
 
-a1 = DatabaseURL("mysql://user:password@hostname/dbname?charset=uft8")
-print(a1.test())
+test_url = "mysql://localhost:3306/ry?useUnicode=&useJDBCCompliantTimezoneShift=&useLegacyDatetimeCode=&serverTimezone=PRC&characterEncoding=UTF8"
+# a1 = DatabaseURL(test_url)
+
+a2 = Database(test_url)
+a2._get_backend()
