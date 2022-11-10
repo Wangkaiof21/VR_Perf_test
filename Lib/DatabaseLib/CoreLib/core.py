@@ -1,6 +1,7 @@
 import asyncio
 import contextlib
 import functools
+import inspect
 import logging
 from Lib.BaseLib.LogMessage import LogMessage, LOG_RUN_INFO, LOG_ERROR, LOG_WARN
 import typing
@@ -32,7 +33,9 @@ except ImportError:  # pragma: no cover
     CONNECT_EXTRA = {}
     DISCONNECT_EXTRA = {}
 
-logger = logging.getLogger("databases")
+
+def get_func_name():
+    return inspect.stack()[1][3]
 
 
 class Database:
@@ -45,13 +48,40 @@ class Database:
         "sqlite": "databases.backends.sqlite:SQLiteBackend",
     }
 
+    # typing.Union[str, "DatabaseURL"]
+    #
+    # 传入类名 返回类的类型
     def __init__(self, url: typing.Union[str, "DatabaseURL"], *, force_rollback: bool = False, **options: typing.Any):
-        # Union[str, "DatabaseURL"] 意思是可以传两种类型的值，Union的字符串或Union的数据库地址
+        # Union[str, "DatabaseURL"]
+        # 代表联合类型，这个参数里可以传入两种以上类型，DatabaseURL方法返回类型的字符串或str的数据库地址。
+        # 放在类的结果后面表示，返回两种、两种以上类型
+
         self.url = DatabaseURL(url)
         self.options = options
+        LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg=f"url => {self.url}")
+        LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg=f"option => {self.options}")
         self.is_connected = False
         self._force_rollback = force_rollback
+
         backend_str = self._get_backend()
+        backend_cls = import_from_string(backend_str)
+        assert issubclass(backend_cls, DatabaseBackend)
+        self._backend = backend_cls(self.url, **self.options)
+        # issubclass函数主要用于判断一个对象是否为另外一个对象的子类
+        self.connection_context = ContextVar("connection_context")  # type: ContextVar
+        self._global_connection = None  # type: typing.Optional[Connection]
+        self._global_transaction = None  # type: typing.Optional[Transaction]
+
+    async def connect(self) -> None:
+        """
+        Establish the connection pool.
+        建立连接池
+        :return:
+        """
+        if self.is_connected:
+            LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg="Already connected, skipping connection")
+            return None
+        await self._backend.connect()
 
     def _get_backend(self) -> str:
         """
@@ -260,7 +290,8 @@ class DatabaseURL:
 
     def __eq__(self, other: typing.Any) -> bool:
         """
-        这个是判断值是否相等的 返回bool值
+        这个类传创建的对象在判断的时候全都为相等
+        默认调用python的is方法
         :param other:
         :return:
         """
@@ -277,8 +308,7 @@ class _EmptyNetloc(str):
         return True
 
 
-test_url = "mysql://localhost:3306/ry?useUnicode=&useJDBCCompliantTimezoneShift=&useLegacyDatetimeCode=&serverTimezone=PRC&characterEncoding=UTF8"
+test_url = "mysql://192.168.1.1:3306/ry?useUnicode=&useJDBCCompliantTimezoneShift=&useLegacyDatetimeCode=&serverTimezone=PRC&characterEncoding=UTF8"
 # a1 = DatabaseURL(test_url)
 
 a2 = Database(test_url)
-a2._get_backend()
