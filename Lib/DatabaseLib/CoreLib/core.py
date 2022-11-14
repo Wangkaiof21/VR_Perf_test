@@ -58,8 +58,8 @@ class Database:
 
         self.url = DatabaseURL(url)
         self.options = options
-        LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg=f"url => {self.url}")
-        LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg=f"option => {self.options}")
+        # LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg=f"url => {self.url}")
+        # LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg=f"option => {self.options}")
         self.is_connected = False
         self._force_rollback = force_rollback
 
@@ -89,7 +89,7 @@ class Database:
         没有则返回
         :return:
         """
-        print(self.SUPPORTED_BACKENDS.get(self.url.scheme, self.SUPPORTED_BACKENDS[self.url.dialect]))
+        # print(self.SUPPORTED_BACKENDS.get(self.url.scheme, self.SUPPORTED_BACKENDS[self.url.dialect]))
         return self.SUPPORTED_BACKENDS.get(self.url.scheme, self.SUPPORTED_BACKENDS[self.url.dialect])
 
 
@@ -275,6 +275,7 @@ class DatabaseURL:
             kwargs["netloc"] = _EmptyNetloc()
         components = self.components._replace(**kwargs)
         return self.__class__(components.geturl())
+        # 返回他的所属类
 
     @property
     def obscure_password(self) -> str:
@@ -283,9 +284,21 @@ class DatabaseURL:
         return self._url
 
     def __str__(self) -> str:
+        """
+        自定义返回类的介绍信息
+        比__repr__返回友好些 直接返回的是类的自定义返回
+        a = DatabaseURL()
+        print(a)
+        —> self._url
+        :return:
+        """
         return self._url
 
     def __repr__(self) -> str:
+        """
+        自定义返回类的介绍信息
+        :return:
+        """
         return f"{self.__class__.__name__}({repr(self.obscure_password)})"
 
     def __eq__(self, other: typing.Any) -> bool:
