@@ -2,6 +2,7 @@ import getpass
 import logging
 import typing
 import uuid
+from abc import ABC
 
 import aiomysql
 from sqlalchemy.dialects.mysql import pymysql
@@ -18,3 +19,8 @@ from Lib.DatabaseLib.CoreLib.interfaces import (
     Record,
     TransactionBackend,
 )
+
+
+class MySQLBackend(DatabaseBackend):
+    def __init__(self, database_url: typing.Union[DatabaseURL, str], **options: typing.Any) -> None:
+        self._database_url = DatabaseURL
