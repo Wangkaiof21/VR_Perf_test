@@ -51,3 +51,38 @@ class MySQLBackend(DatabaseBackend):
                 key = "maxsize"
             kwargs[key] = value
         return kwargs
+
+    async def connect(self) -> None:
+        assert self._pool is None, "DatabaseBackend is already running"
+        kwargs = self._get_connection_kwargs()
+        self._pool = self._get_connection_kwargs()
+        self._pool = await aiomysql.create_pool(
+            host=self._database_url.hostname,
+            port=self._database_url.port or 3306,
+            user=self._database_url.username or getpass.getuser(),
+            password=self._database_url.password,
+            db=self._database_url.database,
+            autocommit=True,
+            **kwargs
+
+        )
+
+    async def disconnect(self) -> None:
+        assert self._pool is not None, "DatabasesBackend is not running"
+        self._pool.close()
+        await self._pool.wait_closed()
+        self._pool = None
+
+    def connection(self) -> "ConnectionBackend":
+        return MySQLConnection(self, self._dialect)
+
+
+class CompilationContext:
+    def __init__(self, context: ExecutionContext):
+        self.context = context
+
+class MySQLConnection:
+    def __init__(self, context: ExecutionContext):
+        self.context = context
+
+    async def
