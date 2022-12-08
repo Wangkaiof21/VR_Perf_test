@@ -35,6 +35,33 @@ import os
 # adb.isMove = 1
 # print(adb.stop_())
 
-a = "dsjakfbdsjhnlaaaaccc"
-b = {"a":1,"c":3}
-print(a._replace(b))
+def binSearch(arr, search_number):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = low + (high - low) // 2
+        if arr[mid] == search_number:
+            return mid
+        elif arr[mid] > search_number:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return "ERROR！"
+
+
+arr = [1, 123, 1999, 523, 42, 5, 4, 2, 324, 5, 2, 771, 77, 3, 4, 2, 4, 2,7758]
+arr = list(set(arr))
+print(arr)
+ret = binSearch(arr, 77)
+
+# class ObcTest:
+#     def __init__(self, **args):
+#         self._number = args
+#
+#     def get_num(self):
+#         print(self._number["a"])
+#         print(repr(self._number))
+#
+#
+# A = ObcTest(a=123, b="test")
+# A.get_num()
