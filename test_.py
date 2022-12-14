@@ -51,8 +51,10 @@ def binSearch(arr, search_number):
 
 arr = [1, 123, 1999, 523, 42, 5, 4, 2, 324, 5, 2, 771, 77, 3, 4, 2, 4, 2,7758]
 arr = list(set(arr))
-print(arr)
 ret = binSearch(arr, 77)
+
+arr2 = [1, 123, 1999, 523, 42, 5, 4, 2, 324, 5, 2, 771, 77, 3, 4, 2, 4, 2,7758]
+print(arr2[:])
 
 # class ObcTest:
 #     def __init__(self, **args):
