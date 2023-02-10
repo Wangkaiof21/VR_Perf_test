@@ -28,7 +28,7 @@ class PowerWashPerfData:
         self.save_index = save_index
         # TODO:关键字列表要从外层传入
         self.VR_INDEX = ['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB', 'battery_level_percentage',
-                         'average_frame_rate', 'Time Stamp']
+                         'average_frame_rate', 'Time Stamp', 'cpu_level', 'gpu_level']
 
     def get_file_data(self):
         """
@@ -192,7 +192,11 @@ class PowerWashPerfData:
 #                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
 # pw.get_file_data()
 
-pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_PW_data",
-                       file_num=20221018,
+# pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_PW_data",
+#                        file_num=20221018,
+#                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
+
+pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_level_data",
+                       file_num=20230210,
                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
 pw.get_file_data()

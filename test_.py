@@ -185,4 +185,6 @@ def test_func(states_needs,states_for_station):
     :return:
     """
     cover = states_needs & states_for_station
-    if len(cover) > len
+    if len(cover) > len(states_covered):
+        best_station = station
+        states_covered
