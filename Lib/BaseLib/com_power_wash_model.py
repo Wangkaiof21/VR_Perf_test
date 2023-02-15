@@ -29,6 +29,7 @@ class PowerWashPerfData:
         # TODO:关键字列表要从外层传入
         self.VR_INDEX = ['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB', 'battery_level_percentage',
                          'average_frame_rate', 'Time Stamp', 'cpu_level', 'gpu_level']
+        # TODO:gpu_level有数据没做出图，需要排查
 
     def get_file_data(self):
         """
@@ -52,6 +53,7 @@ class PowerWashPerfData:
                     files_[case_name] = result
         except Exception as e:
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"File error --> {e} !!!")
+
         try:
             # TODO:改成自动获取
             clean_save_path = f"{self.save_path}\\Quest2_image"
@@ -196,7 +198,11 @@ class PowerWashPerfData:
 #                        file_num=20221018,
 #                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
 
-pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_level_data",
-                       file_num=20230210,
+# pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_level_data",
+#                        file_num=20230210,
+#                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
+
+pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\\Desktop\\vr_\VR_Perf_test\\perf_data\\VR_PW_FULL_data",
+                       file_num=20230215,
                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
 pw.get_file_data()
