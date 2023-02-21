@@ -18,7 +18,8 @@ def get_func_name():
 
 
 class PowerWashPerfData:
-    def __init__(self, base_dir, file_num, save_dir, save_index=None):
+    def __init__(self, base_dir, file_num, save_dir, test_case_index: list, photo_save: bool, perf_image_path: str,
+                 save_index=None, ):
         self.index = file_num
         self.file_path = base_dir if os.path.exists(base_dir) else LogMessage(level=LOG_ERROR, module=get_func_name(),
                                                                               msg="data path dose not exist")
@@ -26,10 +27,9 @@ class PowerWashPerfData:
                                                                               msg="save path dose not exist")
         self.perf_data_path = os.path.join(self.file_path, str(self.index))
         self.save_index = save_index
-        # TODO:关键字列表要从外层传入
-        self.VR_INDEX = ['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB', 'battery_level_percentage',
-                         'average_frame_rate', 'Time Stamp', 'cpu_level', 'gpu_level']
-        # TODO:gpu_level有数据没做出图，需要排查
+        self.photo_save = photo_save
+        self.perf_image_path = perf_image_path
+        self.VR_INDEX = test_case_index
 
     def get_file_data(self):
         """
@@ -53,16 +53,17 @@ class PowerWashPerfData:
                     files_[case_name] = result
         except Exception as e:
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"File error --> {e} !!!")
-
         try:
-            # TODO:改成自动获取
-            clean_save_path = f"{self.save_path}\\Quest2_image"
+            # TODO:仔细想想路径的事，现在是两条路径，文件编号需要输入
+            clean_save_path = f"{self.save_path}\\{self.perf_image_path}"
+            # clean_save_path =
             if os.path.exists(clean_save_path):
+                # 使用模块的权限删除路径上的文件
                 shutil.rmtree(clean_save_path)
         except Exception as e:
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"File error --> {e} !!!")
         for case_name, val in files_.items():
-            self.draw_vr_power_wash_map(str(case_name), val, save_path=self.save_path)
+            self.draw_vr_power_wash_map(str(case_name), val, save_path=self.save_path, save_index=self.photo_save)
         return files_
 
     def get_vr_csv_data(self, fp: str, split_num_start: int, split_num_end: int, show=None) -> dict:
@@ -78,6 +79,7 @@ class PowerWashPerfData:
         """
         if not os.path.exists(fp):
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg="file is None")
+            return {"error": None}
         # test_project_name = os.path.abspath(os.path.join(fp, "..")).split("\\")[-1]
         lines = list()
         result = dict()
@@ -97,15 +99,12 @@ class PowerWashPerfData:
         lines = np.array(lines).T
         lines_copy = lines.tolist()
         # 反转数组 且转换为一般list
+
         wash_lines = list()
         for index in range(len(lines_copy)):
             if lines_copy[index][0] in self.VR_INDEX:
                 wash_lines.append(lines_copy[index])
         try:
-            # test_num = random.randint(0, len(wash_lines))
-            # if split_num_start > len(wash_lines[test_num]) or split_num_end > len(wash_lines[test_num]):
-            #     LogMessage(level=LOG_ERROR, module=get_func_name(),
-            #                msg=f"split_num {split_num_start}, split_num {split_num_end} out of the range")
             for line in wash_lines:
                 key, val = line[0], [int(x) for x in line[1:]]
                 if split_num_start and split_num_end:
@@ -115,10 +114,9 @@ class PowerWashPerfData:
         except Exception as e:
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"Error => {e}")
         show if show is None else LogMessage(level=LOG_RUN_INFO, module=get_func_name(), msg=f"Data => {result}")
-
         return result
 
-    def draw_vr_power_wash_map(self, case_name: str, perf_data: list, save_path: str) -> None:
+    def draw_vr_power_wash_map(self, case_name: str, perf_data: list, save_path: str, save_index: bool) -> None:
         """
         一体机数据画图 可能有些问题 需要改进
         删除可能有点权限不足的问题 无法删除旧文件
@@ -127,6 +125,7 @@ class PowerWashPerfData:
         :param case_name: 测试用例名
         :param perf_data: list数据
         :param save_path: 保存地址 后面可能设置个默认的
+        :param save_index: 是否生成图片
         :return:
         """
         map_ = DrawMap()
@@ -139,15 +138,27 @@ class PowerWashPerfData:
         flag = len(perf_data)
         if flag == 1:
             for line in perf_data:
+                """
+                取时间作为x轴刻度
+                这里不该用-1 列表的方式获取，会出问题，应该用类似dict的get方法
+                也不该del掉该元素
+                """
                 file_time = [x for x in range(len(line.get(self.VR_INDEX[-1])))]
                 del line[self.VR_INDEX[-1]]
                 for key, value in line.items():
                     # print("dddd", key, value, len(file_time), len(value))
-                    map_.get_plot(x_list=file_time, y_list=value, title=key, show=False, line_style='solid',
+                    map_.get_plot(x_list=file_time,
+                                  y_list=value,
+                                  title=key,
+                                  show=False,
+                                  line_style='solid',
                                   x_label="time/s",
-                                  y_label="fluctuation/s", x_lim=True, legend_index=(key,),
-                                  x_ticks_list=[file_time[0], file_time[-1]], x_ticks_nums=[0, len(file_time)],
-                                  save=True,
+                                  y_label="fluctuation/s",
+                                  x_lim=True,
+                                  legend_index=(key,),
+                                  x_ticks_list=[file_time[0], file_time[-1]],
+                                  x_ticks_nums=[0, len(file_time)],
+                                  save=save_index,
                                   path=f"{image_save_path}\\{key}.png")
         elif flag > 1:
             # 取一个标准值当作裁剪值，不然会报错
@@ -170,39 +181,38 @@ class PowerWashPerfData:
             file_time = [x for x in range(len(dic.get(self.VR_INDEX[-1])[0]))]
             del dic[self.VR_INDEX[-1]]
             for key, val in dic.items():
-                # print(key, val)
-                map_.get_plots(x_list=val[0], y_list=val, title=key, show=False, line_style='solid',
+                map_.get_plots(x_list=val[0],
+                               y_list=val,
+                               title=key,
+                               show=False,
+                               line_style='solid',
                                x_label="time/s",
-                               y_label="fluctuation/s", x_lim=True, legend_index=(key,),
+                               y_label="fluctuation/s",
+                               x_lim=True,
+                               legend_index=(key,),
                                x_ticks_list=[file_time[0], file_time[-1]], x_ticks_nums=[0, len(file_time)],
-                               save=True,
+                               save=save_index,
                                path=f"{image_save_path}\\{key}.png")
-
-            # lines = np.mat(np.array(a))
-            # 求每一个数据的平均
-            # z = list()
-            # for line in lines:
-            #     z.append(np.mean(line))
-            # 求每所有数据的平均
-            # print(np.sum(z) / len(lines))
+        # lines = np.mat(np.array(a))
+        # 求每一个数据的平均
+        # z = list()
+        # for line in lines:
+        #     z.append(np.mean(line))
+        # 求每所有数据的平均
+        # print(np.sum(z) / len(lines))
         else:
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"Error!!")
 
 
-# pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_PW_data",
-#                        file_num=20221018,
-#                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
-# pw.get_file_data()
-
-# pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_PW_data",
-#                        file_num=20221018,
-#                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
-
-# pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\Desktop\\vr_\\VR_Perf_test\\perf_data\\VR_level_data",
-#                        file_num=20230210,
-#                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
-
 pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\\Desktop\\vr_\VR_Perf_test\\perf_data\\VR_PW_FULL_data",
                        file_num=20230215,
-                       save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image")
+                       save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image",
+                       # 这里有一点点问题，'Time Stamp'这个参数是作为x轴的参数，但是设计的有问题，后期从生成个新列表
+                       # [,'Time Stamp'].insert(0,新数据)
+                       test_case_index=['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB',
+                                        'battery_level_percentage',
+                                        'average_frame_rate', 'cpu_level', 'gpu_level', 'Time Stamp'],
+                       photo_save=True,
+                       perf_image_path="Quest2_image"
+                       )
 pw.get_file_data()

@@ -171,20 +171,6 @@ import os
 #             low_costs_node = node
 #     return low_costs_node
 
-fruits = set(["avocado", "tomato", "banana"])
-vagetables = set(["beets", "carrots", "tomato"])
-# print(fruits & vagetables)
-# print(fruits | vagetables)
-# print(fruits - vagetables)
-# print(vagetables - fruits)
-def test_func(states_needs,states_for_station):
-    """
+a = ['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB', 'battery_level_percentage',
+     'average_frame_rate', 'Time Stamp', 'cpu_level', 'gpu_level']
 
-    :param states_needs:
-    :param states_for_station:
-    :return:
-    """
-    cover = states_needs & states_for_station
-    if len(cover) > len(states_covered):
-        best_station = station
-        states_covered
