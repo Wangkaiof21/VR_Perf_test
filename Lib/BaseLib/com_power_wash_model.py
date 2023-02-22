@@ -204,15 +204,15 @@ class PowerWashPerfData:
             LogMessage(level=LOG_ERROR, module=get_func_name(), msg=f"Error!!")
 
 
-pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\\Desktop\\vr_\VR_Perf_test\\perf_data\\VR_PW_FULL_data",
-                       file_num=20230215,
-                       save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image",
-                       # 这里有一点点问题，'Time Stamp'这个参数是作为x轴的参数，但是设计的有问题，后期从生成个新列表
-                       # [,'Time Stamp'].insert(0,新数据)
-                       test_case_index=['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB',
-                                        'battery_level_percentage',
-                                        'average_frame_rate', 'cpu_level', 'gpu_level', 'Time Stamp'],
-                       photo_save=True,
-                       perf_image_path="Quest2_image"
-                       )
-pw.get_file_data()
+# pw = PowerWashPerfData(base_dir="C:\\Users\\Administrator\\Desktop\\vr_\VR_Perf_test\\perf_data\\VR_PW_FULL_data",
+#                        file_num=20230215,
+#                        save_dir="C:\\Users\\Administrator\\Desktop\\vr_\\VR_Perf_test\\power_wash_image",
+#                        # 这里有一点点问题，'Time Stamp'这个参数是作为x轴的参数，但是设计的有问题，后期从生成个新列表
+#                        # [,'Time Stamp'].insert(0,新数据)
+#                        test_case_index=['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB',
+#                                         'battery_level_percentage',
+#                                         'average_frame_rate', 'cpu_level', 'gpu_level', 'Time Stamp'],
+#                        photo_save=True,
+#                        perf_image_path="Quest2_image"
+#                        )
+# pw.get_file_data()
