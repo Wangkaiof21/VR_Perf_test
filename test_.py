@@ -171,6 +171,63 @@ import os
 #             low_costs_node = node
 #     return low_costs_node
 
-a = ['cpu_utilization_percentage', 'app_pss_MB', 'app_uss_MB', 'battery_level_percentage',
-     'average_frame_rate', 'Time Stamp', 'cpu_level', 'gpu_level']
 
+from tkinter import Tk, Checkbutton, Frame, IntVar
+
+
+class Options:
+    def __init__(self, parent, name, selection=None, select_all=False):
+        self.parent = parent
+        self.name = name
+        self.selection = selection
+
+        self.variable = IntVar()
+        self.checkbutton = Checkbutton(self.parent, text=self.name,
+                                       variable=self.variable, command=self.check)
+
+        if selection is None:
+            self.checkbutton.pack(side='top')
+        elif select_all:
+            self.checkbutton.config(command=self.select_all)
+            self.checkbutton.pack()
+            for item in self.selection:
+                item.checkbutton.pack(side='top')
+
+    def check(self):
+        state = self.variable.get()
+        if state == 1:
+            print(f'Selected: {self.name}')
+
+            if all([True if item.variable.get() == 1 else False for item in self.selection[:-1]]):
+                self.selection[-1].checkbutton.select()
+
+        elif state == 0:
+            print(f'Deselected: {self.name}')
+
+            if self.selection[-1].variable.get() == 1:
+                self.selection[-1].checkbutton.deselect()
+
+    def select_all(self):
+        state = self.variable.get()
+        if state == 1:
+            for item in self.selection[:-1]:
+                item.checkbutton.deselect()
+                item.checkbutton.invoke()
+        elif state == 0:
+            for item in self.selection[:-1]:
+                item.checkbutton.select()
+                item.checkbutton.invoke()
+
+
+selection = []
+
+root = Tk()
+
+option_frame = Frame(root)
+option_frame.pack(side='left', fill='y')
+
+for i in range(5):
+    selection.append(Options(option_frame, f'Option {i + 1}', selection))
+selection.append(Options(option_frame, 'Select All', selection, True))
+
+root.mainloop()
