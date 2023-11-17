@@ -172,62 +172,93 @@ import os
 #     return low_costs_node
 
 
-from tkinter import Tk, Checkbutton, Frame, IntVar
+# from tkinter import Tk, Checkbutton, Frame, IntVar
+#
+#
+# class Options:
+#     def __init__(self, parent, name, selection=None, select_all=False):
+#         self.parent = parent
+#         self.name = name
+#         self.selection = selection
+#
+#         self.variable = IntVar()
+#         self.checkbutton = Checkbutton(self.parent, text=self.name,
+#                                        variable=self.variable, command=self.check)
+#
+#         if selection is None:
+#             self.checkbutton.pack(side='top')
+#         elif select_all:
+#             self.checkbutton.config(command=self.select_all)
+#             self.checkbutton.pack()
+#             for item in self.selection:
+#                 item.checkbutton.pack(side='top')
+#
+#     def check(self):
+#         state = self.variable.get()
+#         if state == 1:
+#             print(f'Selected: {self.name}')
+#
+#             if all([True if item.variable.get() == 1 else False for item in self.selection[:-1]]):
+#                 self.selection[-1].checkbutton.select()
+#
+#         elif state == 0:
+#             print(f'Deselected: {self.name}')
+#
+#             if self.selection[-1].variable.get() == 1:
+#                 self.selection[-1].checkbutton.deselect()
+#
+#     def select_all(self):
+#         state = self.variable.get()
+#         if state == 1:
+#             for item in self.selection[:-1]:
+#                 item.checkbutton.deselect()
+#                 item.checkbutton.invoke()
+#         elif state == 0:
+#             for item in self.selection[:-1]:
+#                 item.checkbutton.select()
+#                 item.checkbutton.invoke()
+#
+#
+# selection = []
+#
+# root = Tk()
+#
+# option_frame = Frame(root)
+# option_frame.pack(side='left', fill='y')
+#
+# for i in range(5):
+#     selection.append(Options(option_frame, f'Option {i + 1}', selection))
+# selection.append(Options(option_frame, 'Select All', selection, True))
+#
+# root.mainloop()
 
+# i = int(input("test_data:"))
+# arr = [1000000, 600000, 400000, 200000, 100000, 0]
+# rat = [0.01, 0.015, 0.03, 0.05, 0.075, 0.1]
+# result = 0
+# for index in range(0, 6):
+#     if i > arr[index]:
+#         result += (i - arr[index]) * rat[index]  # 计算超过的部分奖金超过的部分 乘于 提成部分的值
+#         i = arr[index]
+# print(result)
+# for x in range(1, 10):
+#     for y in range(0, 10):
+#         for z in range(0, 10):
+#             d1 = x * 100 + y * 10 + z
+#             d2 = pow(x, 3) + pow(y, 3) + pow(z, 3)
+#             if d1 == d2:
+#                 print(d1)
+# for row in range(3):
+#     for col in range(3):
+#         Z[row][col] = X[row][col] +Y[row][col]
+# sum_value = lambda x, y, z: x * y * z
+# print(sum_value(169, 889, 395))
 
-class Options:
-    def __init__(self, parent, name, selection=None, select_all=False):
-        self.parent = parent
-        self.name = name
-        self.selection = selection
+import numpy as np
 
-        self.variable = IntVar()
-        self.checkbutton = Checkbutton(self.parent, text=self.name,
-                                       variable=self.variable, command=self.check)
-
-        if selection is None:
-            self.checkbutton.pack(side='top')
-        elif select_all:
-            self.checkbutton.config(command=self.select_all)
-            self.checkbutton.pack()
-            for item in self.selection:
-                item.checkbutton.pack(side='top')
-
-    def check(self):
-        state = self.variable.get()
-        if state == 1:
-            print(f'Selected: {self.name}')
-
-            if all([True if item.variable.get() == 1 else False for item in self.selection[:-1]]):
-                self.selection[-1].checkbutton.select()
-
-        elif state == 0:
-            print(f'Deselected: {self.name}')
-
-            if self.selection[-1].variable.get() == 1:
-                self.selection[-1].checkbutton.deselect()
-
-    def select_all(self):
-        state = self.variable.get()
-        if state == 1:
-            for item in self.selection[:-1]:
-                item.checkbutton.deselect()
-                item.checkbutton.invoke()
-        elif state == 0:
-            for item in self.selection[:-1]:
-                item.checkbutton.select()
-                item.checkbutton.invoke()
-
-
-selection = []
-
-root = Tk()
-
-option_frame = Frame(root)
-option_frame.pack(side='left', fill='y')
-
-for i in range(5):
-    selection.append(Options(option_frame, f'Option {i + 1}', selection))
-selection.append(Options(option_frame, 'Select All', selection, True))
-
-root.mainloop()
+t_list = [1, 2, 3, 4, 3, 4, 13, 3124, 7]
+tang_array = np.array(t_list)
+print(tang_array.dtype)  # 内容字节
+print(np.shape(tang_array))  # 数组结构
+print(tang_array.size)  # 数量
+print(tang_array.fill(0))  # 空数组填充零
