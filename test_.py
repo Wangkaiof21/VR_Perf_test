@@ -256,9 +256,45 @@ import os
 
 import numpy as np
 
-t_list = [1, 2, 3, 4, 3, 4, 13, 3124, 7]
-tang_array = np.array(t_list)
-print(tang_array.dtype)  # 内容字节
-print(np.shape(tang_array))  # 数组结构
-print(tang_array.size)  # 数量
-print(tang_array.fill(0))  # 空数组填充零
+# t_list = [1, 2, 3, 4, 3, 4, 13, 3124, 7]
+# tang_array = np.array(t_list)
+# print(tang_array.dtype)  # 内容字节
+# print(np.shape(tang_array))  # 数组结构
+# print(tang_array.size)  # 数量
+# # print(tang_array.fill(0))  # 空数组填充零
+# print(tang_array.ndim)  # 数组维度
+#
+# tang_array2 = np.array(
+#     [[1, 2, 3],
+#      [4, 5, 6],
+#      [7, 8, 9]]
+# )
+# print(np.shape(tang_array2))
+# tang_array3 = tang_array2.copy()  # 指向不同内存块
+# tang3_array = np.arange(0, 100, 2)  # 从0开始到10，间隔是2
+
+# mask = [1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]
+# mask2 = np.array(mask, dtype=bool)  # 筛选结果变为布尔值，也可以为int 浮点
+
+# random_array = np.random.rand(10)
+# print(random_array >= 0.1)  # 判断数据中大于等于0.1的值
+
+_array = np.arange(0, 100, 10)
+print(np.where(_array >= 30))  # 返回符合要求的数组位置
+
+_array2 = np.arange(0, 100, 2)
+print(_array2.dtype)
+print(_array2.astype(np.float32))  # 改变数组内的数据类型
+
+# 数组运算
+_array3 = np.array([[1, 2, 3], [4, 5, 6]])
+row_list = np.sum(_array3, axis=0)  # 以行进行运算
+print(row_list)
+col_list = np.sum(_array3, axis=1)  # 以列进行运算
+print(col_list)
+# 同理min 和max方法也一样
+print(np.min(_array3, axis=1))
+print(np.max(_array3, axis=1))
+print(np.argmin(_array3, axis=1))  # 求这列中最小值的位置
+print(np.argmax(_array3, axis=1))  # 求这列中最大值的位置
+print(np.mean(_array3, axis=1))  # 求这列中平均值
