@@ -289,12 +289,22 @@ print(_array2.astype(np.float32))  # 改变数组内的数据类型
 # 数组运算
 _array3 = np.array([[1, 2, 3], [4, 5, 6]])
 row_list = np.sum(_array3, axis=0)  # 以行进行运算
-print(row_list)
+# print(row_list)
 col_list = np.sum(_array3, axis=1)  # 以列进行运算
-print(col_list)
+# print(col_list)
 # 同理min 和max方法也一样
-print(np.min(_array3, axis=1))
-print(np.max(_array3, axis=1))
-print(np.argmin(_array3, axis=1))  # 求这列中最小值的位置
-print(np.argmax(_array3, axis=1))  # 求这列中最大值的位置
-print(np.mean(_array3, axis=1))  # 求这列中平均值
+# print(np.min(_array3, axis=1))
+# print(np.max(_array3, axis=1))
+# print(np.argmin(_array3, axis=1))  # 求这列中最小值的位置
+# print(np.argmax(_array3, axis=1))  # 求这列中最大值的位置
+# print(np.mean(_array3, axis=1))  # 求这列中平均值
+# print(_array3.clip(2, 5))  # 即整个数组的值限制在指定值a_min,与a_max之间，对比a_min小的和比a_max大的值就重置为a_min,和a_max。
+# print(_array3.round(decimals=1))  # 四舍五入几位数
+# print(_array3.sort())  # 排序
+# print(_array3.argsort())  # 排序且知道索引值
+# print(np.linspace(0, 10, 9))  # 生成一个指定大小，指定数据区间的均匀分布序列 生成序列包含num个元素均匀分布在num的数量上
+
+value_list = np.linspace(0, 10, 13)
+insert_list = np.array([2.6, 3.5, 9.9])
+np.searchsorted(value_list, insert_list)  # 将数据搜索到并插入数组内，返回位置
+print(value_list)
