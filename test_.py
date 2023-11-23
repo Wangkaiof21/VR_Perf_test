@@ -279,18 +279,18 @@ import numpy as np
 # random_array = np.random.rand(10)
 # print(random_array >= 0.1)  # 判断数据中大于等于0.1的值
 
-_array = np.arange(0, 100, 10)
-print(np.where(_array >= 30))  # 返回符合要求的数组位置
+# _array = np.arange(0, 100, 10)
+# print(np.where(_array >= 30))  # 返回符合要求的数组位置
 
-_array2 = np.arange(0, 100, 2)
-print(_array2.dtype)
-print(_array2.astype(np.float32))  # 改变数组内的数据类型
+# _array2 = np.arange(0, 100, 2)
+# print(_array2.dtype)
+# print(_array2.astype(np.float32))  # 改变数组内的数据类型
 
 # 数组运算
-_array3 = np.array([[1, 2, 3], [4, 5, 6]])
-row_list = np.sum(_array3, axis=0)  # 以行进行运算
+# _array3 = np.array([[1, 2, 3], [4, 5, 6]])
+# row_list = np.sum(_array3, axis=0)  # 以行进行运算
 # print(row_list)
-col_list = np.sum(_array3, axis=1)  # 以列进行运算
+# col_list = np.sum(_array3, axis=1)  # 以列进行运算
 # print(col_list)
 # 同理min 和max方法也一样
 # print(np.min(_array3, axis=1))
@@ -304,7 +304,85 @@ col_list = np.sum(_array3, axis=1)  # 以列进行运算
 # print(_array3.argsort())  # 排序且知道索引值
 # print(np.linspace(0, 10, 9))  # 生成一个指定大小，指定数据区间的均匀分布序列 生成序列包含num个元素均匀分布在num的数量上
 
-value_list = np.linspace(0, 10, 13)
-insert_list = np.array([2.6, 3.5, 9.9])
-np.searchsorted(value_list, insert_list)  # 将数据搜索到并插入数组内，返回位置
-print(value_list)
+# value_list = np.linspace(0, 10, 13)
+# insert_list = np.array([2.6, 3.5, 9.9])
+# np.searchsorted(value_list, insert_list)  # 将数据搜索到并插入数组内，返回位置
+# print(value_list)
+#
+# test_list = np.array([[100, 90, 95], [1, 2, 3], [999, 985, 9456]])
+# index = np.lexsort([-1 * test_list[:, 0], test_list[:, -2]])  # 按照列来升序降序（-1，不输入值升序）排列
+# []指定那一列 :指所有样本数字指那一列
+
+# 改变array维度
+# test_array = np.arange(10)
+# print(test_array.reshape(2, 5)) # 把一维轴切割成两行五列
+# 增加新轴
+# test_array = test_array[:, np.newaxis]  # 在后面加一个轴
+# test_array = test_array[np.newaxis, :]  # 在前面加一个轴
+# test_array = test_array[:np.newaxis, np.newaxis]  # 在后面加两个轴
+# print(test_array.shape)
+# print(test_array)
+
+# 剔除多余的轴
+# squeeze_array = test_array.squeeze()
+# print(squeeze_array.shape)
+# 矩阵转阵列
+# test_array2 = squeeze_array.reshape(2, 5)
+# print(test_array2.transpose())
+# print(test_array2.T)
+# 链接数据
+# a = np.arange(20, 30)
+# b = np.arange(10)
+# a = a.reshape(2, 5)
+# b = b.reshape(2, 5)
+# c = np.concatenate((a, b), axis=0)  # 等同于print(np.Ystack((a, b)))
+# print(c.shape, c)  # 上下拼接
+# d = np.concatenate((a, b), axis=1)  # 等同于print(np.Xstack((a, b)))
+# print(d.shape, d)  # 横着拼接
+#
+# print(d.flatten())  # 突出数据拉长操作
+
+# 构造数据
+# print(np.zeros(3))  # 构建一个以0为基础的数组
+# p_data = np.ones((3, 3), dtype=np.float32)  # 构建一个以1为基础的数组
+
+# a = np.empty(6)
+# a.fill(100)
+# print(a)
+
+# 构造维度和w1一摸一样以1为基础的数组
+# w1 = np.zeros((3, 3))
+# w2 = np.ones_like(w1)
+# w3 = np.zeros_like(w1)
+# print(w1, w2, w3, end="\n")
+
+# 构造数据运算
+# x = np.array([5, 1])
+# y = np.array([3, 2])
+# 乘法
+# print(np.multiply(x, y))
+# 内积计算 对位相乘且相加 有先后顺序
+# print("dot = :", np.dot(x, y))
+# print("dot = :", np.dot(y, x))
+# 逻辑与或非
+# x = np.arange(10)
+# y = np.array([0, 10, 1, 0, 1, 10, 0, 1, 0, 1])
+# print(np.logical_and(x, y))
+# print(np.logical_or(x, y))
+# print(np.logical_not(x, y))
+
+# 随即模块
+# s = np.random.rand(5, 6)  # 五行六列
+# v = np.random.randint(99, size=(9, 9))  # 九行九列 整数随机0-99
+# d = np.random.randint(0, 99, 10)  # 从0-9取10个随机数
+
+# 高斯分布
+# mu, sigma = 1, 100
+# line = np.random.normal(mu, sigma, 10)
+# np.set_printoptions(precision=2)  # 调整精度
+
+# 洗牌操作
+nd_line = np.arange(10)
+np.random.shuffle(nd_line)  # 洗牌
+np.random.seed(100)  # 随机种子
+print(nd_line)
