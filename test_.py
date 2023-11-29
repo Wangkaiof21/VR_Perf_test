@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 
 # a = "KBE_RES_PATH = %KBE_ROOT%/kbe/res;%KBE_ROOT%/assets/;%KBE_ROOT%/assets/scripts;%KBE_ROOT%/assets/res/"
 # b = a.replace("/", "\\")
@@ -382,7 +383,51 @@ import numpy as np
 # np.set_printoptions(precision=2)  # 调整精度
 
 # 洗牌操作
-nd_line = np.arange(10)
-np.random.shuffle(nd_line)  # 洗牌
-np.random.seed(100)  # 随机种子
-print(nd_line)
+# nd_line = np.arange(10)
+# np.random.shuffle(nd_line)  # 洗牌
+# np.random.seed(100)  # 随机种子
+# print(nd_line)
+
+
+# np读数据
+# 传统
+# test_list = list()
+# file_dir = "C:\\Users\\Administrator\\Desktop\\111\\VR_Perf_test\\tang_txt"
+# with open(file_dir, 'r') as f:
+#     for line in f.readline():
+#         files = line.split()
+#         cur_data = [float(x) for x in files]
+#         test_list.append(cur_data)
+# data = np.array(test_list)
+# 等同于
+# np.loadtxt(file_dir, delimiter=',', skiprows=1)# 意思是以逗号作为分割，不要第一行的表头
+# txt_data = np.arange(10)
+# txt_data.reshape(2, 5)
+# txt_data = txt_data.reshape(2, 5)
+# np.savetxt("txt.data", txt_data, fmt="%d", delimiter=",")
+# 保存数据，fmt不已科学计数法保存
+
+# pandas
+
+
+data = {"test_data": [1, 2, 3, 4, 3, 321, 54, 4321, 8, 5, 123, 5, 2123, 413],
+        "Name": [1324, 3, 4, 34, 234, "wei_lian", 14, 4, 32, 4, 324, 314, 32]}
+df = pd.DataFrame(data)
+# df = df.set_index("Name")  # 指定顺序索引 可以set index之后直接查找人名所在的行 df['wei_lian']
+#
+# df.head()
+# df.describe()  # 统计所有数值类型数据的基本特性
+# df.loc[df['Sex'] == 'male', 'Age'].mean()
+#      首先找到性别的为男性的乘客，然后找到样本数据为年龄的这一列 再.mean求平均操作
+
+# groupby 统计
+# 分型统计法，先把所有相关的元素获取然后进行操作，当我们直接使用统计值时，可以知道整体状况，比如所有人的年龄的平均值，但是比如我们想要知道：男性和女性的年龄分别是多少。这时我们就需要使用
+# print(df.groupby('Sex').sum())
+# print(df.groupby('Age').mean())  # 平均用的多
+#
+# print(df.groupby('Age').aggregate(np.mean))
+# print(df.sum(axis=1))  # 求和操作可以指定行列和numpy
+# print(df.sum(axis="Age"))  # 求和操作可以指定列明
+# print(df.corr())  # 求每一列的相关系数[1,-1]
+# print(df["Age"].value_counts(ascending=True))  # 统计一列的不重复的数值指标 true为升序
+# print(df)
