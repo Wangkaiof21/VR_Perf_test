@@ -439,13 +439,49 @@ import numpy as np
 # s = pd.Series(data=data, index=index)
 
 # 数据表merge操作 将相同名字的列拼接 达到丰富行数据的操作
-left_df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
-                        'A': ['A0', 'A1', 'A2', 'A3'],
-                        'B': ['B0', 'B1', 'B2', 'B3']})
-right_df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
-                         'C': ['C0', 'C1', 'C2', 'C3'],
-                         'D': ['D0', 'D1', 'D2', 'D3']})
-res = pd.merge(left_df, right_df, on='key')  # on=选择的列
-print(res)
-res2 = pd.merge(left_df, right_df, on=['key1', 'key2'], how='outer')  # how=假设列名字相同但数值有差异的表，可以用how他会把所有可能性列出以nan值填充
-res3 = pd.merge(left_df, right_df, on=['key1', 'key2'], how='outer', indicator=True)  # 打开指示器，会把合并方法写出来 一般没啥用
+# left_df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
+#                         'A': ['A0', 'A1', 'A2', 'A3'],
+#                         'B': ['B0', 'B1', 'B2', 'B3']})
+# right_df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
+#                          'C': ['C0', 'C1', 'C2', 'C3'],
+#                          'D': ['D0', 'D1', 'D2', 'D3']})
+# res = pd.merge(left_df, right_df, on='key')  # on=选择的列
+# print(res)
+# res2 = pd.merge(left_df, right_df, on=['key1', 'key2'], how='outer')  # how=假设列名字相同但数值有差异的表，
+# 可以用how他会把所有可能性列出以nan值填充 也可以填充‘left’，‘right’，以那边为基准
+
+# res3 = pd.merge(left_df, right_df, on=['key1', 'key2'], how='outer', indicator=True)  # 打开指示器，会把合并方法写出来 一般没啥用
+
+# 增加显示参数
+# pd.set_option('display.max_rows', 6)
+# pd.set_option('display.max_columns', 30)
+# pd.set_option('display.precision', 3) #小数点
+# 数据透视表
+# example_df = pd.merge(left_df, right_df, on=['key1', 'key2'], how='outer')
+# 这里的index意思是你想统计那个指标，columns的那一个列的属性，values以什么方式统计
+# example_pivot = example_df.pivot(index='Category', columns='Month', values='Amount')
+# example_pivot2 = example_df.pivot(index='Sex', columns='Pclass', values='Fare', aggfunc='max')  # 统计最贵的
+# example_pivot3 = example_df.pivot(index='Sex', columns='Pclass', values='Fare', aggfunc='mean')  # 统计平均的的
+
+
+# 将数据中的时间格式转换成pd支持的时间格式 方便后续操作
+# s = pd.Series(['2017-11-24 00:00:00', '2017-11-25 00:00:00', '2017-11-26 00:00:00'])
+# ts = pd.to_datetime(s)
+# print(ts.dt.hour)
+# print(ts.dt.day)
+# print(ts.dt.weekday)
+# ts = pd.Series(pd.date_range(start='2022-10-01', periods=10, freq='12H'))
+
+# 拿到数据后，第一件事先转换date数据，再把它设成原来的索引
+# data = pd.read_csv('./data/flow_data.csv', index_col=0, parse_dates=True)# 也可以在读数据时候增加parse=True把时间作为索引
+data = pd.read_csv('./data/flow_data.csv', index_col=0)
+data['Time'] = pd.to_datetime(data['Time'])
+data = data.set_index("Time")
+
+# 这样就可以直接以时间索引作为切片取出数据 也可以直接取月份为1的
+print(data[pd.Timestamp('2017-11-24 00:00:00'):pd.Timestamp('2017-11-24 00:00:00')])
+print(data.index.month == 1)
+data.resample('D').mean().head()  # 指定数据重采样，以天为间隔的方式
+data.resample('3D').mean().head()  # 指定数据重采样，以3天为间隔的方式
+data.resample('M').mean().head()  # 指定数据重采样，以月为间隔的方式
+data.resample('3M').mean().head()  # 指定数据重采样，以3个月为间隔的方式
