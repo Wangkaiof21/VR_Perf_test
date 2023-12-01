@@ -410,9 +410,10 @@ import numpy as np
 # pandas
 
 
-data = {"test_data": [1, 2, 3, 4, 3, 321, 54, 4321, 8, 5, 123, 5, 2123, 413],
-        "Name": [1324, 3, 4, 34, 234, "wei_lian", 14, 4, 32, 4, 324, 314, 32]}
-df = pd.DataFrame(data)
+# data = {"test_data": [1, 2, 3, 4, 3, 321, 54, 4321, 8, 5, 123, 5, 2123, 413],
+#         "Name": [1324, 3, 4, 34, 234, "wei_lian", 14, 4, 32, 4, 324, 314, 32]}
+# df = pd.DataFrame(data)
+
 # df = df.set_index("Name")  # 指定顺序索引 可以set index之后直接查找人名所在的行 df['wei_lian']
 #
 # df.head()
@@ -428,6 +429,23 @@ df = pd.DataFrame(data)
 # print(df.groupby('Age').aggregate(np.mean))
 # print(df.sum(axis=1))  # 求和操作可以指定行列和numpy
 # print(df.sum(axis="Age"))  # 求和操作可以指定列明
+# print(df.cov())  #
 # print(df.corr())  # 求每一列的相关系数[1,-1]
 # print(df["Age"].value_counts(ascending=True))  # 统计一列的不重复的数值指标 true为升序
+# print(df["Age"].value_counts(ascending=True, bins=5))  # 统计一列的不重复的数值指标 true为升序 ,bins为划分区间
 # print(df)
+# data = [10, 11, 12]
+# index = ['1', '2', '3']
+# s = pd.Series(data=data, index=index)
+
+# 数据表merge操作 将相同名字的列拼接 达到丰富行数据的操作
+left_df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
+                        'A': ['A0', 'A1', 'A2', 'A3'],
+                        'B': ['B0', 'B1', 'B2', 'B3']})
+right_df = pd.DataFrame({'key': ['K0', 'K1', 'K2', 'K3'],
+                         'C': ['C0', 'C1', 'C2', 'C3'],
+                         'D': ['D0', 'D1', 'D2', 'D3']})
+res = pd.merge(left_df, right_df, on='key')  # on=选择的列
+print(res)
+res2 = pd.merge(left_df, right_df, on=['key1', 'key2'], how='outer')  # how=假设列名字相同但数值有差异的表，可以用how他会把所有可能性列出以nan值填充
+res3 = pd.merge(left_df, right_df, on=['key1', 'key2'], how='outer', indicator=True)  # 打开指示器，会把合并方法写出来 一般没啥用
