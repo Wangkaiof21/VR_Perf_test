@@ -474,14 +474,63 @@ import numpy as np
 
 # 拿到数据后，第一件事先转换date数据，再把它设成原来的索引
 # data = pd.read_csv('./data/flow_data.csv', index_col=0, parse_dates=True)# 也可以在读数据时候增加parse=True把时间作为索引
-data = pd.read_csv('./data/flow_data.csv', index_col=0)
-data['Time'] = pd.to_datetime(data['Time'])
-data = data.set_index("Time")
+# data = pd.read_csv('./data/flow_data.csv', index_col=0)
+# data['Time'] = pd.to_datetime(data['Time'])
+# data = data.set_index("Time")
 
 # 这样就可以直接以时间索引作为切片取出数据 也可以直接取月份为1的
-print(data[pd.Timestamp('2017-11-24 00:00:00'):pd.Timestamp('2017-11-24 00:00:00')])
-print(data.index.month == 1)
-data.resample('D').mean().head()  # 指定数据重采样，以天为间隔的方式
-data.resample('3D').mean().head()  # 指定数据重采样，以3天为间隔的方式
-data.resample('M').mean().head()  # 指定数据重采样，以月为间隔的方式
-data.resample('3M').mean().head()  # 指定数据重采样，以3个月为间隔的方式
+# print(data[pd.Timestamp('2017-11-24 00:00:00'):pd.Timestamp('2017-11-24 00:00:00')])
+# print(data.index.month == 1)
+# data.resample('D').mean().head()  # 指定数据重采样，以天为间隔的方式
+# data.resample('3D').mean().head()  # 指定数据重采样，以3天为间隔的方式
+# data.resample('M').mean().head()  # 指定数据重采样，以月为间隔的方式
+# data.resample('3M').mean().head()  # 指定数据重采样，以3个月为间隔的方式
+
+
+# import random
+# 常用操作
+data = pd.DataFrame({'group': ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c', ],
+                     'data': ['8', '6', '8', '2', '6', '2', '7', '0', '6']})
+
+data.sort_values(by=['group', 'data'], ascending=[False, True],
+                 inplace=True)  # 这里的意思是先以group降序排序，然后再data升序排序，inplace是赋值到数据里那不然只有打印
+
+# data.drop_duplicates() # 合并同类项
+# data.drop_duplicates(subset='k1') # 合并同类项
+
+# apply 这个方法要传进去一个函数，方法执行的时候，会对表格中每一个数据进行函数操作
+# def food_map(series):
+#     if series['food'] == 'A1':
+#         return 'A'
+#     elif series['food'] == 'A2':
+#         return 'A'
+#     elif series['food'] == 'B1':
+#         return 'B'
+#     elif series['food'] == 'B2':
+#         return 'B'
+#     elif series['food'] == 'B3':
+#         return 'B'
+#     elif series['food'] == 'C1':
+#         return 'C'
+#     elif series['food'] == 'C2':
+#         return 'C'
+#     elif series['food'] == 'C3':
+#         return 'C'
+# data['food_map'] = data.apply(food_map,axis = 'columns')
+# 也可以使用.map()方法，传进一个字典做映射
+# titanic = pd.DataFrame()
+#
+#
+# def not_null_count(columns):
+#     columns_null = pd.isnull(columns)
+#     null = columns[columns_null]
+#     return len(null)
+#
+#
+# columns_null_count = titanic.apply(not_null_count)
+
+# 自定义bins 取区间数据
+ages = [x for x in range(10, 80)]
+bins = [10, 40, 80]
+bins_res = pd.cut(ages,bins)
+print(bins_res)
