@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import numpy as np
 
 # a = "KBE_RES_PATH = %KBE_ROOT%/kbe/res;%KBE_ROOT%/assets/;%KBE_ROOT%/assets/scripts;%KBE_ROOT%/assets/res/"
 # b = a.replace("/", "\\")
@@ -489,11 +490,11 @@ import numpy as np
 
 # import random
 # 常用操作
-data = pd.DataFrame({'group': ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c', ],
-                     'data': ['8', '6', '8', '2', '6', '2', '7', '0', '6']})
-
-data.sort_values(by=['group', 'data'], ascending=[False, True],
-                 inplace=True)  # 这里的意思是先以group降序排序，然后再data升序排序，inplace是赋值到数据里那不然只有打印
+# data = pd.DataFrame({'group': ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c', ],
+#                      'data': ['8', '6', '8', '2', '6', '2', '7', '0', '6']})
+#
+# data.sort_values(by=['group', 'data'], ascending=[False, True],
+#                  inplace=True)  # 这里的意思是先以group降序排序，然后再data升序排序，inplace是赋值到数据里那不然只有打印
 
 # data.drop_duplicates() # 合并同类项
 # data.drop_duplicates(subset='k1') # 合并同类项
@@ -530,7 +531,26 @@ data.sort_values(by=['group', 'data'], ascending=[False, True],
 # columns_null_count = titanic.apply(not_null_count)
 
 # 自定义bins 取区间数据
-ages = [x for x in range(10, 80)]
-bins = [10, 40, 80]
-bins_res = pd.cut(ages,bins)
-print(bins_res)
+# ages = [x for x in range(10, 80)]
+# bins = [10, 40, 80]
+# bins_res = pd.cut(ages, bins)
+# bins_res2 = pd.cut(ages, bins, labels=['test1', 'test2', 'test3'])  # 给自定义区间命名
+# print(bins_res.isnull())  # 判断有没有缺失值，返回bool
+# print(bins_res.isnull().any())  # 判断有没有缺失值，以行为基准
+# print(bins_res.isnull().any(axis=1))  # 判断有没有缺失值，以列为基准
+# print(bins_res.fillna(7))  # 填充缺失值，全部替换为7
+
+
+# pandas的字符串操作
+# df = pd.DataFrame(np.random.randn(3, 2), columns=['A a', 'B b'], index=range(3))
+# df.columns = df.columns.str.replace(' ', '_')  # 替换列中的空格
+# df.columns = df.columns.str.replace(' ', '')  # 替换列中的空格
+# df.str.strip()
+# df.str.rstrip()
+# df.str.lstrip()
+# df.columns = df.columns.str.split('_', expand=True)  # 以'_'切割数据并转换为列值
+# df.columns = df.columns.str.contains('Ag')  # 判断列中是否包含这个字母，返回bool
+# pandas - 数据离散化之 get_dummies
+s = pd.Series(['a', 'a|b', 'a|c'])
+print(s.str.get_dummies(sep='|'))
+
