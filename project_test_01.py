@@ -1,6 +1,10 @@
+import warnings
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
+plt.style.use('seaborn')
+warnings.filterwarnings("ignore")
 
 
 def get_test_data(fp):
@@ -9,7 +13,7 @@ def get_test_data(fp):
     :param fp:
     :return: None
     """
-    data = pd.read_csv(fp, index_col=0, parse_dates=True)
+    data = pd.read_csv(fp, index_col=0, parse_dates=True)  # parse_dates日期格式化
     # print(data.info())  # 看样本量
     # data.describe().round(2)  # 保留两位小数点
     # 指标汇总
@@ -61,23 +65,33 @@ def get_test_data(fp):
     # data2[['AAPL.O', 'min1', 'max2', 'positions']].plot(figsize=(10, 6), secondary_y='positions')
 
     # 标普500指数SPX 恐慌指数VIX
-    data3 = data.copy().dropna()[['.SPX', '.VIX']]
+    # data3 = data.copy().dropna()[['.SPX', '.VIX']]
     # data3.plot(figsize=(10, 6), subplots=True)
     # 取两年的指数数据合成一张图
-    data3.loc[:'2012-12-31'].plot(figsize=(12, 6), secondary_y='.VIX')
+    # data3.loc[:'2012-12-31'].plot(figsize=(12, 6), secondary_y='.VIX')
 
     # 散点图 直方图 和密度估计图 看趋势用的,spx,vix增加
-    rets = np.log(data3 / data3.shift(1))
-    pd.plotting.scatter_matrix(rets,
-                               alpha=0.2,
-                               diagonal='hits',
-                               hist_kwds={'bins': 50},
-                               figsize=(10, 6))
+    # rets = np.log(data3 / data3.shift(1))
+    # pd.plotting.scatter_matrix(rets,
+    #                            alpha=0.2,
+    #                            diagonal='hits',
+    #                            hist_kwds={'bins': 50},
+    #                            figsize=(10, 6))
     # 直方图替换成曲线图,其实本质上直方图无限接近曲线图 bins是直方图需要的参数,曲线则不需要
     # pd.plotting.scatter_matrix(rets,
     #                            alpha=0.2,
     #                            diagonal='kde',
     #                            figsize=(10, 6))
+
+    # 构建回归方程 y = kx+b
+    rets = data[['.SPX', '.VIX']].copy()
+    rets.dropna(inplace=True)
+    rets = np.log(rets / rets.shift(1))
+    # reg = np.polyfit(rets['.SPX'], rets['.VIX'], deg=1)  # ?
+    # ax = rets.plot(kind='scatter', x='.SPX', y='.VIX', figsize=(10, 6))
+    # ax.plot(rets['.SPX'], np.pval(rets[reg, '.SPX']), 'r')
+
+    rets['.SPX'].rolling(250).corr(rets['.VIX']).plot(figsize=(10, 6))
 
     plt.show()
 
