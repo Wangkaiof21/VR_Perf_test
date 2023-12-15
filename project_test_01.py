@@ -65,38 +65,61 @@ def get_test_data(fp):
     # data2[['AAPL.O', 'min1', 'max2', 'positions']].plot(figsize=(10, 6), secondary_y='positions')
 
     # 标普500指数SPX 恐慌指数VIX
-    # data3 = data.copy().dropna()[['.SPX', '.VIX']]
+    data3 = data.copy().dropna()[['.SPX', '.VIX']]
     # data3.plot(figsize=(10, 6), subplots=True)
     # 取两年的指数数据合成一张图
     # data3.loc[:'2012-12-31'].plot(figsize=(12, 6), secondary_y='.VIX')
 
     # 散点图 直方图 和密度估计图 看趋势用的,spx,vix增加
-    # rets = np.log(data3 / data3.shift(1))
-    # pd.plotting.scatter_matrix(rets,
-    #                            alpha=0.2,
-    #                            diagonal='hits',
-    #                            hist_kwds={'bins': 50},
-    #                            figsize=(10, 6))
+    rets = np.log(data3 / data3.shift(1))
+    pd.plotting.scatter_matrix(rets,
+                               alpha=0.2,
+                               diagonal='hist',  # 注意hist
+                               hist_kwds={'bins': 50},
+                               figsize=(10, 6)
+                               )
+
     # 直方图替换成曲线图,其实本质上直方图无限接近曲线图 bins是直方图需要的参数,曲线则不需要
-    # pd.plotting.scatter_matrix(rets,
-    #                            alpha=0.2,
-    #                            diagonal='kde',
-    #                            figsize=(10, 6))
+    pd.plotting.scatter_matrix(rets,
+                               alpha=0.2,
+                               diagonal='kde',
+                               figsize=(10, 6))
 
     # 构建回归方程 y = kx+b
-    rets = data[['.SPX', '.VIX']].copy()
     rets.dropna(inplace=True)
-    rets = np.log(rets / rets.shift(1))
-    # reg = np.polyfit(rets['.SPX'], rets['.VIX'], deg=1)  # ?
-    # ax = rets.plot(kind='scatter', x='.SPX', y='.VIX', figsize=(10, 6))
-    # ax.plot(rets['.SPX'], np.pval(rets[reg, '.SPX']), 'r')
+    reg = np.polyfit(rets['.SPX'], rets['.VIX'], deg=1)
 
+    ax = rets.plot(kind='scatter', x='.SPX', y='.VIX', figsize=(10, 6))
+    ax.plot(rets['.SPX'], np.pval(rets[reg, '.SPX']), 'r')
     rets['.SPX'].rolling(250).corr(rets['.VIX']).plot(figsize=(10, 6))
 
     plt.show()
 
 
+def get_apple_line_data(fp: str, san_1: int, san_2: int):
+    """
+
+    :param fp:
+    :return:
+    """
+    full_data = pd.read_csv(fp, index_col=0, parse_dates=True)  # parse_dates日期格式化
+    fulldata = full_data.copy().dropna(inplace=True)
+    full_data = fulldata[['AAPL.O']]
+    # full_data['SMA1'] = full_data.rolling(san_1).mean()
+    print(full_data.tail())
+    # full_data['SMA2'] = full_data['AAPL.O'].rolling(san_2).mean()
+    # full_data['SAN1'] = full_data['AAPL.O'].rolling(san_1).mean()
+    # full_data['SAN2'] = full_data['AAPL.O'].rolling(san_2).mean()
+
+    # where用来测算当前值是短期大于长期 还是长期大于短期 ,且设置标记位
+    # where中间有三个参数,判断条件,满足返回什么,不满足返回什么
+    # full_data['Position'] = np.where(full_data['SAN1'] > full_data['SAN2'], 1, -1)
+    # full_data.plot(secondary_y='Position', figsize=(10, 6))
+    # plt.show()
+
+
 if __name__ == '__main__':
     file_name = 'data.csv'
     file_path = f'.//{file_name}'
-    get_test_data(file_path)
+    # get_test_data(file_path)
+    get_apple_line_data(file_path, san_1=42, san_2=252)
